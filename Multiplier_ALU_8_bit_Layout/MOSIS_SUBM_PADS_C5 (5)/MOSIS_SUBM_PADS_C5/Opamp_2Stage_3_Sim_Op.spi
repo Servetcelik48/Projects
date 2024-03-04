@@ -1,0 +1,76 @@
+*** SPICE deck for cell Opamp_2Stage_3_Sim_Op{sch} from library 
+*MOSIS_SUBM_PADS_C5
+*** Created on Thu Feb 22, 2007 19:29:30
+*** Last revised on Sun Oct 30, 2011 08:23:40
+*** Written on Sun Oct 30, 2011 08:23:42 by Electric VLSI Design System, 
+*version 9.01
+*** Layout tech: mocmos, foundry MOSIS
+*** UC SPICE *** , MIN_RESIST 4.0, MIN_CAPAC 0.1FF
+
+*** SUBCIRCUIT Bias_Circuit_1 FROM CELL Bias_Circuit_1{sch}
+.SUBCKT Bias_Circuit_1 Vbias1 Vbias2 Vbias3 Vbias4 Vbiasp gnd vdd
+** GLOBAL gnd
+** GLOBAL vdd
+Mnmos@12 Vbias4 Vbias3 net@215 gnd NMOS L=0.6U W=3U
+Mnmos@13 net@215 Vbias4 gnd gnd NMOS L=0.6U W=3U
+Mnmos@14 Vbias2 Vbias3 net@211 gnd NMOS L=0.6U W=3U
+Mnmos@15 net@211 Vbias4 gnd gnd NMOS L=0.6U W=3U
+Mnmos@16 Vbias1 Vbias3 net@213 gnd NMOS L=0.6U W=3U
+Mnmos@17 net@213 Vbias4 gnd gnd NMOS L=0.6U W=3U
+Mnmos@19 Vbias3 Vbias3 gnd gnd NMOS L=6U W=3U
+Mpmos@0 Vbiasp Vbiasp vdd vdd PMOS L=0.6U W=6.6U
+Mpmos@4 Vbias3 Vbiasp vdd vdd PMOS L=0.6U W=6.6U
+Mpmos@5 Vbias4 Vbiasp vdd vdd PMOS L=0.6U W=6.6U
+Mpmos@6 Vbias2 Vbias2 vdd vdd PMOS L=6U W=6.6U
+Mpmos@7 Vbias1 Vbias2 net@205 vdd PMOS L=0.6U W=6.6U
+Mpmos@8 net@205 Vbias1 vdd vdd PMOS L=0.6U W=6.6U
+.ENDS Bias_Circuit_1
+
+*** SUBCIRCUIT cap_2pF FROM CELL cap_2pF{sch}
+.SUBCKT cap_2pF P1 P2
+
+* Spice Code nodes in cell cell 'cap_2pF{sch}'
+CP1P2 P1 P2 2p
+Cb P1 0 200f
+.ENDS cap_2pF
+
+*** SUBCIRCUIT Opamp_2Stage_3 FROM CELL Opamp_2Stage_3{sch}
+.SUBCKT Opamp_2Stage_3 Vbiasp Vm Vout Vp gnd vdd
+** GLOBAL gnd
+** GLOBAL vdd
+Mnmos@2 net@9 Vm net@111 gnd NMOS L=0.6U W=3U
+Mnmos@3 net@170 Vp net@111 gnd NMOS L=0.6U W=3U
+Mnmos@4 net@111 Vbias3 net@109 gnd NMOS L=0.6U W=3U
+Mnmos@5 net@109 Vbias4 gnd gnd NMOS L=0.6U W=3U
+Mnmos@9 net@111 Vbias3 net@115 gnd NMOS L=0.6U W=3U
+Mnmos@10 net@115 Vbias4 gnd gnd NMOS L=0.6U W=3U
+Mnmos@11 net@127 Vbias4 gnd gnd NMOS L=0.6U W=15U
+Mnmos@14 Vout Vbias3 net@127 gnd NMOS L=0.6U W=15U
+Mpmos@1 net@166 net@9 vdd vdd PMOS L=0.6U W=13.2U
+Mpmos@2 net@162 net@9 vdd vdd PMOS L=0.6U W=13.2U
+Mpmos@3 Vout net@170 net@178 vdd PMOS L=0.6U W=66U
+Mpmos@4 net@9 net@9 net@166 vdd PMOS L=0.6U W=13.2U
+Mpmos@5 net@170 net@9 net@162 vdd PMOS L=0.6U W=13.2U
+Mpmos@6 net@178 net@170 vdd vdd PMOS L=0.6U W=66U
+XBias_cir@1 Bias_cir@1_Vbias1 Bias_cir@1_Vbias2 Vbias3 Vbias4 Vbiasp gnd vdd 
++Bias_Circuit_1
+Xcap_1_5p@0 Vout net@162 cap_2pF
+.ENDS Opamp_2Stage_3
+
+.global gnd vdd
+
+*** TOP LEVEL CELL: Opamp_2Stage_3_Sim_Op{sch}
+Ccap@0 net@1 gnd 10u
+Ccap@1 gnd Vout 30p
+Rres@0 Vout net@1 10000k
+XOpamp_2S@0 Vbiasp net@1 Vout Vp gnd vdd Opamp_2Stage_3
+
+* Spice Code nodes in cell cell 'Opamp_2Stage_3_Sim_Op{sch}'
+VDD VDD 0 DC 5
+VGND GND 0 DC 0
+Rbias Vbiasp 0 100k
+VCM Vp 0 2.5 AC 1
+.include c5_models.txt
+*.options post
+.op
+.END

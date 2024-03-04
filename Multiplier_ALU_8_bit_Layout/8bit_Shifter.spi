@@ -1,0 +1,100 @@
+*** SPICE deck for cell 8bit_Shifter{lay} from library ServetCelik_ELE419_Project
+*** Created on Pzt Oca 15, 2024 10:01:51
+*** Last revised on Pzt Oca 15, 2024 12:41:30
+*** Written on Pzt Oca 15, 2024 12:41:38 by Electric VLSI Design System, version 9.07
+*** Layout tech: mocmos, foundry MOSIS
+*** UC SPICE *** , MIN_RESIST 4.0, MIN_CAPAC 0.1FF
+
+*** SUBCIRCUIT ServetCelik_ELE419_Project__NAND_gate2 FROM CELL NAND_gate2{lay}
+.SUBCKT ServetCelik_ELE419_Project__NAND_gate2 0 A A_nand_B B vdd
+Mnmos_0 net_34 B A_nand_B 0 N L=0.6U W=2.4U AS=4.56P AD=1.418P PS=7.3U PD=4.05U
+Mnmos_1 0 A net_34 0 N L=0.6U W=2.4U AS=1.418P AD=16.83P PS=4.05U PD=27.9U
+Mpmos_0 A_nand_B A vdd vdd P L=0.6U W=2.4U AS=13.05P AD=4.56P PS=21U PD=7.3U
+Mpmos_1 vdd B A_nand_B vdd P L=0.6U W=2.4U AS=4.56P AD=13.05P PS=7.3U PD=21U
+.ENDS ServetCelik_ELE419_Project__NAND_gate2
+
+*** SUBCIRCUIT ServetCelik_ELE419_Project__inverter2 FROM CELL inverter2{lay}
+.SUBCKT ServetCelik_ELE419_Project__inverter2 0 A A_not vdd
+Mnmos_0 A_not A 0 0 N L=0.6U W=1.2U AS=9.54P AD=4.725P PS=18.9U PD=9U
+Mpmos_0 A_not A vdd vdd P L=0.6U W=2.4U AS=12.33P AD=4.725P PS=21.9U PD=9U
+.ENDS ServetCelik_ELE419_Project__inverter2
+
+*** SUBCIRCUIT ServetCelik_ELE419_Project__AND_gate2 FROM CELL AND_gate2{lay}
+.SUBCKT ServetCelik_ELE419_Project__AND_gate2 0 A A_and_B B vdd
+XNAND_gat_2 0 A net_0 B vdd ServetCelik_ELE419_Project__NAND_gate2
+Xinverter_2 0 net_0 A_and_B vdd ServetCelik_ELE419_Project__inverter2
+.ENDS ServetCelik_ELE419_Project__AND_gate2
+
+*** SUBCIRCUIT ServetCelik_ELE419_Project__NOR_gate2 FROM CELL NOR_gate2{lay}
+.SUBCKT ServetCelik_ELE419_Project__NOR_gate2 0 A A_nor_B B vdd
+Mnmos_2 A_nor_B A 0 0 N L=0.6U W=1.2U AS=6.525P AD=3.21P PS=13.5U PD=6.1U
+Mnmos_3 0 B A_nor_B 0 N L=0.6U W=1.2U AS=3.21P AD=6.525P PS=6.1U PD=13.5U
+Mpmos_2 net_75 A vdd vdd P L=0.6U W=2.4U AS=13.05P AD=1.418P PS=22.5U PD=4.05U
+Mpmos_3 A_nor_B B net_75 vdd P L=0.6U W=2.4U AS=1.418P AD=3.21P PS=4.05U PD=6.1U
+.ENDS ServetCelik_ELE419_Project__NOR_gate2
+
+*** SUBCIRCUIT ServetCelik_ELE419_Project__OR_gate2 FROM CELL OR_gate2{lay}
+.SUBCKT ServetCelik_ELE419_Project__OR_gate2 0 A A_or_B B vdd
+XNOR_gate_2 0 A net_30 B vdd ServetCelik_ELE419_Project__NOR_gate2
+Xinverter_1 0 net_30 A_or_B vdd ServetCelik_ELE419_Project__inverter2
+.ENDS ServetCelik_ELE419_Project__OR_gate2
+
+*** SUBCIRCUIT ServetCelik_ELE419_Project__2x1MUX_2 FROM CELL 2x1MUX_2{lay}
+.SUBCKT ServetCelik_ELE419_Project__2x1MUX_2 0 D0 D1 OpCode0 out vdd
+XAND_gate_0 0 net_106 net_146 D0 vdd ServetCelik_ELE419_Project__AND_gate2
+XAND_gate_1 0 OpCode0 net_143 D1 vdd ServetCelik_ELE419_Project__AND_gate2
+XOR_gate2_0 0 net_143 out net_146 vdd ServetCelik_ELE419_Project__OR_gate2
+Xinverter_0 0 OpCode0 net_106 vdd ServetCelik_ELE419_Project__inverter2
+.ENDS ServetCelik_ELE419_Project__2x1MUX_2
+
+*** SUBCIRCUIT ServetCelik_ELE419_Project__3in_NAND_gate2 FROM CELL 3in_NAND_gate2{lay}
+.SUBCKT ServetCelik_ELE419_Project__3in_NAND_gate2 0 A A_B_C_nand B C vdd
+Mnmos_0 net_34 B net_55 0 N L=0.6U W=3.6U AS=1.958P AD=1.958P PS=5.25U PD=5.25U
+Mnmos_1 0 A net_34 0 N L=0.6U W=3.6U AS=1.958P AD=19.62P PS=5.25U PD=30.9U
+Mnmos_2 net_55 C A_B_C_nand 0 N L=0.6U W=3.6U AS=5.962P AD=1.958P PS=9U PD=5.25U
+Mpmos_0 A_B_C_nand A vdd vdd P L=0.6U W=2.4U AS=9.06P AD=5.962P PS=14.3U PD=9U
+Mpmos_1 vdd B A_B_C_nand vdd P L=0.6U W=2.4U AS=5.962P AD=9.06P PS=9U PD=14.3U
+Mpmos_2 A_B_C_nand C vdd vdd P L=0.6U W=2.4U AS=9.06P AD=5.962P PS=14.3U PD=9U
+.ENDS ServetCelik_ELE419_Project__3in_NAND_gate2
+
+*** SUBCIRCUIT ServetCelik_ELE419_Project__3in_and FROM CELL 3in_and{lay}
+.SUBCKT ServetCelik_ELE419_Project__3in_and 0 A ABC_and B C vdd
+X3in_NAND_0 0 C net_16 B A vdd ServetCelik_ELE419_Project__3in_NAND_gate2
+Xinverter_0 0 net_16 ABC_and vdd ServetCelik_ELE419_Project__inverter2
+.ENDS ServetCelik_ELE419_Project__3in_and
+
+*** TOP LEVEL CELL: 8bit_Shifter{lay}
+X2x1MUX_2_0 0 net_67 net_72 net_139 S7 vdd ServetCelik_ELE419_Project__2x1MUX_2
+X2x1MUX_2_1 0 net_62 net_67 net_139 S6 vdd ServetCelik_ELE419_Project__2x1MUX_2
+X2x1MUX_2_2 0 net_57 net_62 net_139 S5 vdd ServetCelik_ELE419_Project__2x1MUX_2
+X2x1MUX_2_3 0 net_52 net_57 net_139 S4 vdd ServetCelik_ELE419_Project__2x1MUX_2
+X2x1MUX_2_4 0 net_47 net_52 net_139 S3 vdd ServetCelik_ELE419_Project__2x1MUX_2
+X2x1MUX_2_5 0 net_41 net_47 net_139 S2 vdd ServetCelik_ELE419_Project__2x1MUX_2
+X2x1MUX_2_6 0 net_35 net_41 net_139 S1 vdd ServetCelik_ELE419_Project__2x1MUX_2
+X2x1MUX_2_7 0 net_143 net_35 net_139 S0 vdd ServetCelik_ELE419_Project__2x1MUX_2
+X2x1MUX_2_8 0 D7 0 net_191 net_72 vdd ServetCelik_ELE419_Project__2x1MUX_2
+X2x1MUX_2_9 0 D6 0 net_191 net_67 vdd ServetCelik_ELE419_Project__2x1MUX_2
+X2x1MUX_2_10 0 D5 D7 net_191 net_62 vdd ServetCelik_ELE419_Project__2x1MUX_2
+X2x1MUX_2_11 0 D4 D6 net_191 net_57 vdd ServetCelik_ELE419_Project__2x1MUX_2
+X2x1MUX_2_12 0 D3 D5 net_191 net_52 vdd ServetCelik_ELE419_Project__2x1MUX_2
+X2x1MUX_2_13 0 D2 D4 net_191 net_47 vdd ServetCelik_ELE419_Project__2x1MUX_2
+X2x1MUX_2_14 0 D1 D3 net_191 net_41 vdd ServetCelik_ELE419_Project__2x1MUX_2
+X2x1MUX_2_15 0 D0 D2 net_191 net_35 vdd ServetCelik_ELE419_Project__2x1MUX_2
+X2x1MUX_2_16 0 0 D1 net_191 net_143 vdd ServetCelik_ELE419_Project__2x1MUX_2
+X3in_and_2 0 vdd net_139 vdd vdd vdd ServetCelik_ELE419_Project__3in_and
+X3in_and_3 0 0 net_191 0 0 vdd ServetCelik_ELE419_Project__3in_and
+
+* Spice Code nodes in cell cell '8bit_Shifter{lay}'
+vdd vdd 0 DC 5
+VinD7 D7 0 DC 5
+VinD6 D6 0 DC 0
+VinD5 D5 0 DC 5
+VinD4 D4 0 DC 0
+VinD3 D3 0 DC 5
+VinD2 D2 0 DC 5
+VinD1 D1 0 DC 5
+VinD0 D0 0 DC 0
+.tran 10u 40u
+* Trailer cards are described in this file:
+.INC C:\Users\Servet\Desktop\C5_models.txt
+.END

@@ -1,0 +1,1 @@
+The "ServetCelik_ELE419_Project.jelib" library should be opened with "MOSSIS_SUBM_PADS_C5.jelib" library since the pad cell "Analog_barepadframe_1.5mmX1.5mm" is copied from that library.

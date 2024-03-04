@@ -1,0 +1,93 @@
+*** SPICE deck for cell fullAdder2{sch} from library ServetCelik_ELE419_Project
+*** Created on Pzt Oca 01, 2024 17:14:50
+*** Last revised on Cmt Oca 13, 2024 15:22:19
+*** Written on Cmt Oca 13, 2024 15:22:33 by Electric VLSI Design System, version 9.07
+*** Layout tech: mocmos, foundry MOSIS
+*** UC SPICE *** , MIN_RESIST 4.0, MIN_CAPAC 0.1FF
+
+*** SUBCIRCUIT ServetCelik_ELE419_Project__NOR_gate2 FROM CELL NOR_gate2{sch}
+.SUBCKT ServetCelik_ELE419_Project__NOR_gate2 A A_nor_B B
+** GLOBAL 0
+** GLOBAL vdd
+Mnmos_0 A_nor_B A 0 0 N L=0.6U W=0.6U
+Mnmos_1 A_nor_B B 0 0 N L=0.6U W=0.6U
+Mpmos_0 net_15 A A_nor_B vdd P L=0.6U W=2.4U
+Mpmos_1 vdd B net_15 vdd P L=0.6U W=2.4U
+.ENDS ServetCelik_ELE419_Project__NOR_gate2
+
+*** SUBCIRCUIT ServetCelik_ELE419_Project__inverter2 FROM CELL inverter2{sch}
+.SUBCKT ServetCelik_ELE419_Project__inverter2 A A_not
+** GLOBAL 0
+** GLOBAL vdd
+Mnmos_0 A_not A 0 0 N L=0.6U W=0.6U
+Mpmos_0 vdd A A_not vdd P L=0.6U W=1.2U
+.ENDS ServetCelik_ELE419_Project__inverter2
+
+*** SUBCIRCUIT ServetCelik_ELE419_Project__OR_gate2 FROM CELL OR_gate2{sch}
+.SUBCKT ServetCelik_ELE419_Project__OR_gate2 A A_or_B B
+** GLOBAL 0
+** GLOBAL vdd
+XNOR_gate_1 A net_17 B ServetCelik_ELE419_Project__NOR_gate2
+Xinverter_1 net_17 A_or_B ServetCelik_ELE419_Project__inverter2
+.ENDS ServetCelik_ELE419_Project__OR_gate2
+
+*** SUBCIRCUIT ServetCelik_ELE419_Project__NAND_gate2 FROM CELL NAND_gate2{sch}
+.SUBCKT ServetCelik_ELE419_Project__NAND_gate2 A A_nand_B B
+** GLOBAL 0
+** GLOBAL vdd
+Mnmos_0 A_nand_B A net_14 0 N L=0.6U W=0.6U
+Mnmos_1 net_14 B 0 0 N L=0.6U W=0.6U
+Mpmos_0 vdd A A_nand_B vdd P L=0.6U W=0.6U
+Mpmos_1 vdd B A_nand_B vdd P L=0.6U W=0.6U
+.ENDS ServetCelik_ELE419_Project__NAND_gate2
+
+*** SUBCIRCUIT ServetCelik_ELE419_Project__AND_gate2 FROM CELL AND_gate2{sch}
+.SUBCKT ServetCelik_ELE419_Project__AND_gate2 A A_and_B B
+** GLOBAL 0
+** GLOBAL vdd
+XNAND_gat_1 A net_10 B ServetCelik_ELE419_Project__NAND_gate2
+Xinverter_0 net_10 A_and_B ServetCelik_ELE419_Project__inverter2
+.ENDS ServetCelik_ELE419_Project__AND_gate2
+
+*** SUBCIRCUIT ServetCelik_ELE419_Project__XOR_gate2 FROM CELL XOR_gate2{sch}
+.SUBCKT ServetCelik_ELE419_Project__XOR_gate2 A A_xor_B B
+** GLOBAL 0
+** GLOBAL vdd
+Mnmos_0 A_not A 0 0 N L=0.6U W=1.2U
+Mnmos_1 B_not B 0 0 N L=0.6U W=1.2U
+Mnmos_2 A_xor_B A_not net_55 0 N L=0.6U W=1.2U
+Mnmos_3 net_55 B_not 0 0 N L=0.6U W=1.2U
+Mnmos_4 A_xor_B A net_57 0 N L=0.6U W=1.2U
+Mnmos_5 net_57 B 0 0 N L=0.6U W=1.2U
+Mpmos_1 vdd A A_not vdd P L=0.6U W=2.4U
+Mpmos_2 vdd B B_not vdd P L=0.6U W=2.4U
+Mpmos_3 vdd A_not net_33 vdd P L=0.6U W=2.4U
+Mpmos_4 net_33 A A_xor_B vdd P L=0.6U W=2.4U
+Mpmos_5 vdd B_not net_33 vdd P L=0.6U W=2.4U
+Mpmos_6 net_33 B A_xor_B vdd P L=0.6U W=2.4U
+.ENDS ServetCelik_ELE419_Project__XOR_gate2
+
+*** SUBCIRCUIT ServetCelik_ELE419_Project__halfAdder2 FROM CELL halfAdder2{sch}
+.SUBCKT ServetCelik_ELE419_Project__halfAdder2 A B halfAdder_carry halfAdder_sum
+** GLOBAL 0
+** GLOBAL vdd
+XAND_gate_1 A halfAdder_carry B ServetCelik_ELE419_Project__AND_gate2
+XXOR_gate_1 A halfAdder_sum B ServetCelik_ELE419_Project__XOR_gate2
+.ENDS ServetCelik_ELE419_Project__halfAdder2
+
+.global 0 vdd
+
+*** TOP LEVEL CELL: fullAdder2{sch}
+XOR_gate2_0 net_14 fullAdder_carry net_11 ServetCelik_ELE419_Project__OR_gate2
+XhalfAdde_4 A B net_14 net_40 ServetCelik_ELE419_Project__halfAdder2
+XhalfAdde_5 net_40 Cin net_11 fullAdder_sum ServetCelik_ELE419_Project__halfAdder2
+
+* Spice Code nodes in cell cell 'fullAdder2{sch}'
+vdd vdd 0 DC 5
+VinA A 0 pulse (5 0 0 0.1u 0.1u 20u 40u)
+VinB B 0 pulse (0 5 0 0.1u 0.1u 10u 20u)
+VinCin Cin 0 pulse (0 5 0 0.1u 0.1u 5u 10u)
+.tran 10u 40u
+* Trailer cards are described in this file:
+.INC C:\Users\Servet\Desktop\C5_models.txt
+.END

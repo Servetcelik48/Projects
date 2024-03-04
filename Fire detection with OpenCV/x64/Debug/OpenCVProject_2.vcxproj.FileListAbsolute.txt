@@ -1,0 +1,2 @@
+C:\Users\Servet\Desktop\FireDetection\Projects\OpenCVProject_2\x64\Debug\OpenCVProject_2.exe
+C:\Users\Servet\Desktop\new_proje\Fire detection with OpenCV\x64\Debug\OpenCVProject_2.exe

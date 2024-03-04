@@ -1,0 +1,55 @@
+Circuit: *** SPICE deck for cell 8bit_ALU{lay} from library ServetCelik_ELE419_Project
+
+Ignoring BSIM parameter XL
+Ignoring BSIM parameter XW
+Ignoring BSIM parameter XL
+Ignoring BSIM parameter XW
+WARNING: Node B3 is floating.
+WARNING: Node B2 is floating.
+WARNING: Node B1 is floating.
+WARNING: Node B0 is floating.
+WARNING: Node B4 is floating.
+WARNING: Node B6 is floating.
+WARNING: Node B5 is floating.
+WARNING: Node B7 is floating.
+
+Early termination of direct N-R iteration.
+Direct Newton iteration failed to find .op point.  (Use ".option noopiter" to skip.)
+Starting Gmin stepping
+Gmin = 10
+Gmin = 1.07374
+Gmin = 0.115292
+Gmin = 0.0123794
+Gmin = 0.00132923
+Gmin = 0.000142725
+Gmin = 1.5325e-005
+Gmin = 1.6455e-006
+Gmin = 1.76685e-007
+Gmin = 1.89714e-008
+Gmin = 2.03704e-009
+Gmin = 2.18725e-010
+Gmin = 2.34854e-011
+Gmin = 2.52173e-012
+Gmin = 2.70769e-013
+Gmin = 0
+Gmin stepping succeeded in finding the operating point.
+
+
+Date: Thu Jan 18 09:23:38 2024
+Total elapsed time: 6.649 seconds.
+
+tnom = 27
+temp = 27
+method = modified trap
+totiter = 2473
+traniter = 2082
+tranpoints = 1042
+accept = 1042
+rejected = 0
+matrix size = 1281
+fillins = 3130
+solver = Normal
+Thread vector: 3768.5/559.2[12] 663.4/177.4[12] 226.1/129.5[10] 26.7/31.1[1]  2592/500
+Matrix Compiler1: 431.76 KB object code size  245.3/194.3/[124.4]
+Matrix Compiler2: 223.12 KB object code size  130.4/88.2/[75.8]
+

@@ -1,0 +1,34 @@
+*** SPICE deck for cell Bias_Circuit_2_Sim{lay} from library 
+*MOSIS_SUBM_PADS_C5
+*** Created on Sun Mar 11, 2007 03:26:36
+*** Last revised on Sun Jan 11, 2009 10:26:48
+*** Written on Sun Nov 21, 2010 18:26:29 by Electric VLSI Design System, 
+*version 9.00-q
+*** Layout tech: mocmos, foundry MOSIS
+*** UC SPICE *** , MIN_RESIST 4.0, MIN_CAPAC 0.1FF
+
+*** SUBCIRCUIT sframe FROM CELL sframe;3{lay}
+.SUBCKT sframe gnd vdd
+.ENDS sframe
+
+*** SUBCIRCUIT Bias_Circuit_2 FROM CELL Bias_Circuit_2{lay}
+.SUBCKT Bias_Circuit_2 Vbiasn Vbiasp gnd vdd
+Mnmos@0 gnd Vbiasn Vbiasn gnd NMOS L=0.6U W=3U AS=8.64P AD=5.4P PS=13.2U 
++PD=9.6U
+Mpmos@0 Vbiasp Vbiasp vdd vdd PMOS L=0.6U W=6.6U AS=11.88P AD=11.88P PS=16.8U 
++PD=16.8U
+Mpmos@1 Vbiasn Vbiasp vdd vdd PMOS L=0.6U W=6.6U AS=11.88P AD=8.64P PS=16.8U 
++PD=13.2U
+Xsframe@1 gnd vdd sframe
+.ENDS Bias_Circuit_2
+
+*** TOP LEVEL CELL: Bias_Circuit_2_Sim{lay}
+XBias_Cir@0 Vbiasn Vbiasp gnd vdd Bias_Circuit_2
+
+* Spice Code nodes in cell cell 'Bias_Circuit_2_Sim{lay}'
+VDD VDD 0 DC 5
+VGND GND 0 DC 0
+Ibias Vbiasp 0 DC 20u
+.include C5_models.txt
+.tran 0 1
+.END

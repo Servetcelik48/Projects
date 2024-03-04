@@ -1,0 +1,55 @@
+*** SPICE deck for cell Bias_Circuit_1_Sim{lay} from library 
+*MOSIS_SUBM_PADS_C5
+*** Created on Sun Mar 11, 2007 03:26:36
+*** Last revised on Sun Jan 11, 2009 10:26:01
+*** Written on Sun Nov 21, 2010 18:25:27 by Electric VLSI Design System, 
+*version 9.00-q
+*** Layout tech: mocmos, foundry MOSIS
+*** UC SPICE *** , MIN_RESIST 4.0, MIN_CAPAC 0.1FF
+
+*** SUBCIRCUIT sframe FROM CELL sframe;2{lay}
+.SUBCKT sframe gnd vdd
+.ENDS sframe
+
+*** SUBCIRCUIT Bias_Circuit_1 FROM CELL Bias_Circuit_1{lay}
+.SUBCKT Bias_Circuit_1 Vbias1 Vbias2 Vbias3 Vbias4 Vbiasp gnd vdd
+Mnmos@1 gnd Vbias4 net@8 gnd NMOS L=0.6U W=3U AS=5.4P AD=5.4P PS=9.6U PD=9.6U
+Mnmos@2 net@4 Vbias3 Vbias2 gnd NMOS L=0.6U W=3U AS=8.64P AD=5.512P PS=13.2U 
++PD=9.675U
+Mnmos@3 gnd Vbias4 net@4 gnd NMOS L=0.6U W=3U AS=5.512P AD=5.4P PS=9.675U 
++PD=9.6U
+Mnmos@4 net@31 Vbias3 Vbias1 gnd NMOS L=0.6U W=3U AS=8.64P AD=5.4P PS=13.2U 
++PD=9.6U
+Mnmos@5 gnd Vbias4 net@31 gnd NMOS L=0.6U W=3U AS=5.4P AD=5.4P PS=9.6U 
++PD=9.6U
+Mnmos@6 net@8 Vbias3 Vbias4 gnd NMOS L=0.6U W=3U AS=8.64P AD=5.4P PS=13.2U 
++PD=9.6U
+Mnmos@9 gnd Vbias3 Vbias3 gnd NMOS L=6U W=3U AS=8.64P AD=5.4P PS=13.2U 
++PD=9.6U
+Mpmos@0 Vbiasp Vbiasp vdd vdd PMOS L=0.6U W=6.6U AS=11.88P AD=11.88P PS=16.8U 
++PD=16.8U
+Mpmos@1 Vbias3 Vbiasp vdd vdd PMOS L=0.6U W=6.6U AS=11.88P AD=8.64P PS=16.8U 
++PD=13.2U
+Mpmos@2 Vbias4 Vbiasp vdd vdd PMOS L=0.6U W=6.6U AS=11.88P AD=8.64P PS=16.8U 
++PD=13.2U
+Mpmos@4 Vbias1 Vbias2 net@12 vdd PMOS L=0.6U W=6.6U AS=12.128P AD=8.64P 
++PS=16.875U PD=13.2U
+Mpmos@5 net@12 Vbias1 vdd vdd PMOS L=0.6U W=6.6U AS=11.88P AD=12.128P 
++PS=16.8U PD=16.875U
+Mpmos@6 Vbias2 Vbias2 vdd vdd PMOS L=6U W=6.6U AS=11.88P AD=8.64P PS=16.8U 
++PD=13.2U
+Xsframe@0 gnd vdd sframe
+Xsframe@1 gnd vdd sframe
+Xsframe@2 gnd vdd sframe
+.ENDS Bias_Circuit_1
+
+*** TOP LEVEL CELL: Bias_Circuit_1_Sim{lay}
+XBias_cir@3 vbias1 Vbias2 Vbias3 Vbias4 Vbiasp gnd vdd Bias_Circuit_1
+
+* Spice Code nodes in cell cell 'Bias_Circuit_1_Sim{lay}'
+VDD VDD 0 DC 5
+VGND GND 0 DC 0
+Ibias Vbiasp 0 DC 20u
+.include C5_models.txt
+.tran 0 1
+.END

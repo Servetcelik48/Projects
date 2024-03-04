@@ -1,0 +1,62 @@
+!SESSION 2024-02-19 16:42:22.417 -----------------------------------------------
+eclipse.buildId=Version 1.13.2
+java.version=17.0.6
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=tr_TR
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -data C:\Users\Servet\Desktop\Moving_camera_platform
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2024-02-19 16:42:26.809
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2024-02-19 16:42:26.811
+!MESSAGE Log4j2 initialized with config file C:\Users\Servet\Desktop\Moving_camera_platform\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2024-02-19 16:42:29.472
+!MESSAGE Started RMI Server, listening on port 41337
+!SESSION 2024-02-19 16:43:57.740 -----------------------------------------------
+eclipse.buildId=Version 1.13.2
+java.version=17.0.6
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=tr_TR
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -data C:\Users\Servet\Desktop\Moving_camera_platform
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2024-02-19 16:44:01.383
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2024-02-19 16:44:01.385
+!MESSAGE Log4j2 initialized with config file C:\Users\Servet\Desktop\Moving_camera_platform\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2024-02-19 16:44:03.949
+!MESSAGE Started RMI Server, listening on port 41337
+!SESSION 2024-02-19 16:44:34.254 -----------------------------------------------
+eclipse.buildId=Version 1.13.2
+java.version=17.0.6
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=tr_TR
+Framework arguments:  C:\Users\Servet\Desktop\Moving_camera_platform\.project
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 C:\Users\Servet\Desktop\Moving_camera_platform\.project
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2024-02-19 16:44:37.792
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2024-02-19 16:44:37.793
+!MESSAGE Log4j2 initialized with config file C:\Users\Servet\Desktop\Moving_camera_platform\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2024-02-19 16:44:40.461
+!MESSAGE Started RMI Server, listening on port 41337
+!SESSION 2024-02-19 16:44:57.073 -----------------------------------------------
+eclipse.buildId=Version 1.13.2
+java.version=17.0.6
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=tr_TR
+Framework arguments:  C:\Users\Servet\Desktop\Moving_camera_platform\.cproject
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 C:\Users\Servet\Desktop\Moving_camera_platform\.cproject
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2024-02-19 16:45:00.669
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2024-02-19 16:45:00.672
+!MESSAGE Log4j2 initialized with config file C:\Users\Servet\Desktop\Moving_camera_platform\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2024-02-19 16:45:03.282
+!MESSAGE Started RMI Server, listening on port 41337

@@ -1,0 +1,149 @@
+*** SPICE deck for cell 8bit_multiplier2{lay} from library ServetCelik_ELE419_Project
+*** Created on Sal Oca 02, 2024 23:14:44
+*** Last revised on Per Oca 18, 2024 09:20:30
+*** Written on Per Oca 18, 2024 09:20:38 by Electric VLSI Design System, version 9.07
+*** Layout tech: mocmos, foundry MOSIS
+*** UC SPICE *** , MIN_RESIST 4.0, MIN_CAPAC 0.1FF
+
+*** SUBCIRCUIT ServetCelik_ELE419_Project__NOR_gate2 FROM CELL NOR_gate2{lay}
+.SUBCKT ServetCelik_ELE419_Project__NOR_gate2 0 A A_nor_B B vdd
+Mnmos_2 A_nor_B A 0 0 N L=0.6U W=1.2U AS=6.525P AD=3.21P PS=13.5U PD=6.1U
+Mnmos_3 0 B A_nor_B 0 N L=0.6U W=1.2U AS=3.21P AD=6.525P PS=6.1U PD=13.5U
+Mpmos_2 net_75 A vdd vdd P L=0.6U W=2.4U AS=13.05P AD=1.418P PS=22.5U PD=4.05U
+Mpmos_3 A_nor_B B net_75 vdd P L=0.6U W=2.4U AS=1.418P AD=3.21P PS=4.05U PD=6.1U
+.ENDS ServetCelik_ELE419_Project__NOR_gate2
+
+*** SUBCIRCUIT ServetCelik_ELE419_Project__inverter2 FROM CELL inverter2{lay}
+.SUBCKT ServetCelik_ELE419_Project__inverter2 0 A A_not vdd
+Mnmos_0 A_not A 0 0 N L=0.6U W=1.2U AS=9.54P AD=4.725P PS=18.9U PD=9U
+Mpmos_0 A_not A vdd vdd P L=0.6U W=2.4U AS=12.33P AD=4.725P PS=21.9U PD=9U
+.ENDS ServetCelik_ELE419_Project__inverter2
+
+*** SUBCIRCUIT ServetCelik_ELE419_Project__OR_gate2 FROM CELL OR_gate2{lay}
+.SUBCKT ServetCelik_ELE419_Project__OR_gate2 0 A A_or_B B vdd
+XNOR_gate_2 0 A net_30 B vdd ServetCelik_ELE419_Project__NOR_gate2
+Xinverter_1 0 net_30 A_or_B vdd ServetCelik_ELE419_Project__inverter2
+.ENDS ServetCelik_ELE419_Project__OR_gate2
+
+*** SUBCIRCUIT ServetCelik_ELE419_Project__NAND_gate2 FROM CELL NAND_gate2{lay}
+.SUBCKT ServetCelik_ELE419_Project__NAND_gate2 0 A A_nand_B B vdd
+Mnmos_0 net_34 B A_nand_B 0 N L=0.6U W=2.4U AS=4.56P AD=1.418P PS=7.3U PD=4.05U
+Mnmos_1 0 A net_34 0 N L=0.6U W=2.4U AS=1.418P AD=16.83P PS=4.05U PD=27.9U
+Mpmos_0 A_nand_B A vdd vdd P L=0.6U W=2.4U AS=13.05P AD=4.56P PS=21U PD=7.3U
+Mpmos_1 vdd B A_nand_B vdd P L=0.6U W=2.4U AS=4.56P AD=13.05P PS=7.3U PD=21U
+.ENDS ServetCelik_ELE419_Project__NAND_gate2
+
+*** SUBCIRCUIT ServetCelik_ELE419_Project__AND_gate2 FROM CELL AND_gate2{lay}
+.SUBCKT ServetCelik_ELE419_Project__AND_gate2 0 A A_and_B B vdd
+XNAND_gat_2 0 A net_0 B vdd ServetCelik_ELE419_Project__NAND_gate2
+Xinverter_2 0 net_0 A_and_B vdd ServetCelik_ELE419_Project__inverter2
+.ENDS ServetCelik_ELE419_Project__AND_gate2
+
+*** SUBCIRCUIT ServetCelik_ELE419_Project__XOR_gate2 FROM CELL XOR_gate2{lay}
+.SUBCKT ServetCelik_ELE419_Project__XOR_gate2 0 A A_xor_B B vdd
+Mnmos_7 net_258 B 0 0 N L=0.6U W=1.2U AS=5.783P AD=1.845P PS=11.7U PD=4.2U
+Mnmos_8 A_xor_B A net_258 0 N L=0.6U W=1.2U AS=1.845P AD=2.858P PS=4.2U PD=5.1U
+Mnmos_9 net_259 net_263 A_xor_B 0 N L=0.6U W=1.2U AS=2.858P AD=2.025P PS=5.1U PD=4.5U
+Mnmos_10 0 net_230 net_259 0 N L=0.6U W=1.2U AS=2.025P AD=5.783P PS=4.5U PD=11.7U
+Mnmos_11 net_263 A 0 0 N L=0.6U W=1.2U AS=5.783P AD=4.185P PS=11.7U PD=8.4U
+Mnmos_12 net_230 B 0 0 N L=0.6U W=1.2U AS=5.783P AD=4.725P PS=11.7U PD=9U
+Mpmos_10 A_xor_B B net_199 vdd P L=0.6U W=2.4U AS=4.995P AD=2.858P PS=8.1U PD=5.1U
+Mpmos_11 net_199 A A_xor_B vdd P L=0.6U W=2.4U AS=2.858P AD=4.995P PS=5.1U PD=8.1U
+Mpmos_12 vdd net_263 net_199 vdd P L=0.6U W=2.4U AS=4.995P AD=7.808P PS=8.1U PD=12.6U
+Mpmos_13 net_199 net_230 vdd vdd P L=0.6U W=2.4U AS=7.808P AD=4.995P PS=12.6U PD=8.1U
+Mpmos_14 net_263 A vdd vdd P L=0.6U W=2.4U AS=7.808P AD=4.185P PS=12.6U PD=8.4U
+Mpmos_15 net_230 B vdd vdd P L=0.6U W=2.4U AS=7.808P AD=4.725P PS=12.6U PD=9U
+.ENDS ServetCelik_ELE419_Project__XOR_gate2
+
+*** SUBCIRCUIT ServetCelik_ELE419_Project__halfAdder2 FROM CELL halfAdder2{lay}
+.SUBCKT ServetCelik_ELE419_Project__halfAdder2 0 A B halfAdder_carry halfAdder_sum vdd
+XAND_gate_2 0 A halfAdder_carry B vdd ServetCelik_ELE419_Project__AND_gate2
+XXOR_gate_2 0 A halfAdder_sum B vdd ServetCelik_ELE419_Project__XOR_gate2
+.ENDS ServetCelik_ELE419_Project__halfAdder2
+
+*** SUBCIRCUIT ServetCelik_ELE419_Project__fullAdder2 FROM CELL fullAdder2{lay}
+.SUBCKT ServetCelik_ELE419_Project__fullAdder2 0 A B Cin fullAdder_carry fullAdder_sum vdd
+XOR_gate2_0 0 net_39 fullAdder_carry net_42 vdd ServetCelik_ELE419_Project__OR_gate2
+XhalfAdde_2 0 net_47 Cin net_42 fullAdder_sum vdd ServetCelik_ELE419_Project__halfAdder2
+XhalfAdde_3 0 A B net_39 net_47 vdd ServetCelik_ELE419_Project__halfAdder2
+.ENDS ServetCelik_ELE419_Project__fullAdder2
+
+*** SUBCIRCUIT ServetCelik_ELE419_Project__2bit_RCA2 FROM CELL 2bit_RCA2{lay}
+.SUBCKT ServetCelik_ELE419_Project__2bit_RCA2 0 A0 A1 B0 B1 carry S0 S1 vdd
+XfullAdde_2 0 A1 B1 net_34 carry S1 vdd ServetCelik_ELE419_Project__fullAdder2
+XfullAdde_3 0 A0 B0 0 net_34 S0 vdd ServetCelik_ELE419_Project__fullAdder2
+.ENDS ServetCelik_ELE419_Project__2bit_RCA2
+
+*** SUBCIRCUIT ServetCelik_ELE419_Project__2bit_multiplier2 FROM CELL 2bit_multiplier2{lay}
+.SUBCKT ServetCelik_ELE419_Project__2bit_multiplier2 0 A0 A1 B0 B1 P0 P1 P2 P3 vdd
+XAND_gate_4 0 A1 net_18 B1 vdd ServetCelik_ELE419_Project__AND_gate2
+XAND_gate_5 0 A0 net_11 B1 vdd ServetCelik_ELE419_Project__AND_gate2
+XAND_gate_6 0 A1 net_0 B0 vdd ServetCelik_ELE419_Project__AND_gate2
+XAND_gate_7 0 A0 P0 B0 vdd ServetCelik_ELE419_Project__AND_gate2
+XhalfAdde_2 0 net_11 net_0 net_21 P1 vdd ServetCelik_ELE419_Project__halfAdder2
+XhalfAdde_3 0 net_18 net_21 P3 P2 vdd ServetCelik_ELE419_Project__halfAdder2
+.ENDS ServetCelik_ELE419_Project__2bit_multiplier2
+
+*** SUBCIRCUIT ServetCelik_ELE419_Project__4bit_RCA2 FROM CELL 4bit_RCA2{lay}
+.SUBCKT ServetCelik_ELE419_Project__4bit_RCA2 0 A0 A1 A2 A3 B0 B1 B2 B3 carry S0 S1 S2 S3 vdd
+XfullAdde_4 0 A1 B1 net_175 net_106 S1 vdd ServetCelik_ELE419_Project__fullAdder2
+XfullAdde_5 0 A0 B0 0 net_175 S0 vdd ServetCelik_ELE419_Project__fullAdder2
+XfullAdde_8 0 A3 B3 net_208 carry S3 vdd ServetCelik_ELE419_Project__fullAdder2
+XfullAdde_9 0 A2 B2 net_106 net_208 S2 vdd ServetCelik_ELE419_Project__fullAdder2
+.ENDS ServetCelik_ELE419_Project__4bit_RCA2
+
+*** SUBCIRCUIT ServetCelik_ELE419_Project__4bit_multiplier2 FROM CELL 4bit_multiplier2{lay}
+.SUBCKT ServetCelik_ELE419_Project__4bit_multiplier2 0 A0 A1 A2 A3 B0 B1 B2 B3 carry P0 P1 P2 P3 P4 P5 P6 P7 vdd
+X2bit_RCA_1 0 net_762 net_755 net_771 net_783 carry P6 P7 vdd ServetCelik_ELE419_Project__2bit_RCA2
+X2bit_mul_4 0 A2 A3 B2 B3 net_369 net_364 net_771 net_783 vdd ServetCelik_ELE419_Project__2bit_multiplier2
+X2bit_mul_5 0 A0 A1 B2 B3 net_249 net_258 net_311 net_316 vdd ServetCelik_ELE419_Project__2bit_multiplier2
+X2bit_mul_6 0 A2 A3 B0 B1 net_288 net_291 net_296 net_299 vdd ServetCelik_ELE419_Project__2bit_multiplier2
+X2bit_mul_7 0 A0 A1 B0 B1 P0 P1 net_350 net_353 vdd ServetCelik_ELE419_Project__2bit_multiplier2
+X4bit_RCA_2 0 net_288 net_291 net_296 net_299 net_249 net_258 net_311 net_316 net_752 net_322 net_326 net_330 net_335 vdd ServetCelik_ELE419_Project__4bit_RCA2
+X4bit_RCA_3 0 net_350 net_353 net_369 net_364 net_322 net_326 net_330 net_335 net_743 P2 P3 P4 P5 vdd ServetCelik_ELE419_Project__4bit_RCA2
+XhalfAdde_2 0 net_752 net_743 net_755 net_762 vdd ServetCelik_ELE419_Project__halfAdder2
+.ENDS ServetCelik_ELE419_Project__4bit_multiplier2
+
+*** SUBCIRCUIT ServetCelik_ELE419_Project__8bit_RCA2 FROM CELL 8bit_RCA2{lay}
+.SUBCKT ServetCelik_ELE419_Project__8bit_RCA2 0 A0 A1 A2 A3 A4 A5 A6 A7 B0 B1 B2 B3 B4 B5 B6 B7 carry S0 S1 S2 S3 S4 S5 S6 S7 vdd
+XfullAdde_8 0 A1 B1 net_139 net_126 S1 vdd ServetCelik_ELE419_Project__fullAdder2
+XfullAdde_9 0 A0 B0 0 net_139 S0 vdd ServetCelik_ELE419_Project__fullAdder2
+XfullAdde_10 0 A3 B3 net_165 net_263 S3 vdd ServetCelik_ELE419_Project__fullAdder2
+XfullAdde_11 0 A2 B2 net_126 net_165 S2 vdd ServetCelik_ELE419_Project__fullAdder2
+XfullAdde_12 0 A5 B5 net_209 net_196 S5 vdd ServetCelik_ELE419_Project__fullAdder2
+XfullAdde_13 0 A4 B4 net_263 net_209 S4 vdd ServetCelik_ELE419_Project__fullAdder2
+XfullAdde_14 0 A7 B7 net_235 carry S7 vdd ServetCelik_ELE419_Project__fullAdder2
+XfullAdde_15 0 A6 B6 net_196 net_235 S6 vdd ServetCelik_ELE419_Project__fullAdder2
+.ENDS ServetCelik_ELE419_Project__8bit_RCA2
+
+*** TOP LEVEL CELL: 8bit_multiplier2{lay}
+X4bit_mul_4 0 A4 A5 A6 A7 B0 B1 B2 B3 4bit_mul_4_carry net_77 net_81 net_82 net_83 net_84 net_85 net_101 net_105 vdd ServetCelik_ELE419_Project__4bit_multiplier2
+X4bit_mul_5 0 A4 A5 A6 A7 B4 B5 B6 B7 4bit_mul_5_carry net_257 net_264 net_273 net_277 net_281 net_285 net_292 net_718 vdd ServetCelik_ELE419_Project__4bit_multiplier2
+X4bit_mul_6 0 A0 A1 A2 A3 B0 B1 B2 B3 4bit_mul_6_carry P0 P1 P2 P3 net_111 net_119 net_116 net_122 vdd ServetCelik_ELE419_Project__4bit_multiplier2
+X4bit_mul_7 0 A0 A1 A2 A3 B4 B5 B6 B7 4bit_mul_7_carry net_7 net_4 net_15 net_18 net_22 net_26 net_30 net_33 vdd ServetCelik_ELE419_Project__4bit_multiplier2
+X8bit_RCA_3 0 net_237 net_240 net_245 net_246 net_255 0 0 0 net_257 net_264 net_273 net_277 net_281 net_285 net_292 net_718 8bit_RCA_3_carry P8 P9 P10 P11 P12 P13 P14 P15 vdd ServetCelik_ELE419_Project__8bit_RCA2
+X8bit_RCA_4 0 net_7 net_4 net_15 net_18 net_22 net_26 net_30 net_33 net_77 net_81 net_82 net_83 net_84 net_85 net_101 net_105 net_255 net_142 net_143 net_147 net_150 net_153 net_156 net_159 net_162 vdd ServetCelik_ELE419_Project__8bit_RCA2
+X8bit_RCA_5 0 net_111 net_119 net_116 net_122 0 net_156 0 0 net_142 net_143 net_147 net_150 net_153 0 net_159 net_162 8bit_RCA_5_carry P4 P5 P6 P7 net_237 net_240 net_245 net_246 vdd ServetCelik_ELE419_Project__8bit_RCA2
+
+* Spice Code nodes in cell cell '8bit_multiplier2{lay}'
+vdd vdd 0 DC 5
+VinA7 A7 0 DC 0
+VinA6 A6 0 DC 0
+VinA5 A5 0 DC 0
+VinA4 A4 0 DC 0
+VinA3 A3 0 DC 5
+VinA2 A2 0 DC 5
+VinA1 A1 0 DC 5
+VinA0 A0 0 DC 5
+VinB7 B7 0 DC 5
+VinB6 B6 0 DC 0
+VinB5 B5 0 DC 5
+VinB4 B4 0 DC 0
+VinB3 B3 0 DC 5
+VinB2 B2 0 DC 0
+VinB1 B1 0 DC 5
+VinB0 B0 0 DC 0
+.tran 10u 40u
+* Trailer cards are described in this file:
+.INC C:\Users\Servet\Desktop\C5_models.txt
+.END

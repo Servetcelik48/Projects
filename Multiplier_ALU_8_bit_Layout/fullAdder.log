@@ -1,0 +1,26 @@
+Circuit: *** SPICE deck for cell fullAdder{lay} from library ServetCelik_ELE419_Project
+
+Ignoring BSIM parameter XL
+Ignoring BSIM parameter XW
+Ignoring BSIM parameter XL
+Ignoring BSIM parameter XW
+Direct Newton iteration for .op point succeeded.
+
+Date: Mon Jan 01 17:48:35 2024
+Total elapsed time: 0.158 seconds.
+
+tnom = 27
+temp = 27
+method = modified trap
+totiter = 5772
+traniter = 5747
+tranpoints = 2125
+accept = 1788
+rejected = 337
+matrix size = 29
+fillins = 6
+solver = Normal
+Thread vector: 15.6/10.4[4] 4.8/2.1[4] 1.5/1.1[4] 0.1/1.0[1]  2592/500
+Matrix Compiler1: 3.02 KB object code size  0.7/0.3/[0.2]
+Matrix Compiler2: 3.55 KB object code size  0.3/0.5/[0.3]
+

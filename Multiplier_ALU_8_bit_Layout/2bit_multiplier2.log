@@ -1,0 +1,26 @@
+Circuit: *** SPICE deck for cell 2bit_multiplier2{lay} from library ServetCelik_ELE419_Project
+
+Ignoring BSIM parameter XL
+Ignoring BSIM parameter XW
+Ignoring BSIM parameter XL
+Ignoring BSIM parameter XW
+Direct Newton iteration for .op point succeeded.
+
+Date: Sat Jan 13 16:23:10 2024
+Total elapsed time: 0.155 seconds.
+
+tnom = 27
+temp = 27
+method = modified trap
+totiter = 2118
+traniter = 2082
+tranpoints = 1042
+accept = 1042
+rejected = 0
+matrix size = 40
+fillins = 20
+solver = Normal
+Thread vector: 19.9/9.9[6] 14.0/2.2[6] 4.7/1.2[6] 0.1/1.6[1]  2592/500
+Matrix Compiler1: 5.65 KB object code size  1.0/1.5/[0.4]
+Matrix Compiler2: 5.03 KB object code size  1.6/0.6/[0.3]
+

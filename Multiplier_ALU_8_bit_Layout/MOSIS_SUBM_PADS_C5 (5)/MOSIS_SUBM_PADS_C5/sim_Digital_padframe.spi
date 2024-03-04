@@ -1,0 +1,293 @@
+*** SPICE deck for cell sim_Digital_padframe{sch} from library
+*MOSIS_SUBM_PADS_C5
+*** Created on Fri Sep 25, 2009 12:54:30
+*** Last revised on Sun Nov 21, 2010 14:34:33
+*** Written on Sun Nov 21, 2010 14:36:01 by Electric VLSI Design System,
+*version 8.11
+*** Layout tech: mocmos, foundry MOSIS
+*** UC SPICE *** , MIN_RESIST 4.0, MIN_CAPAC 0.1FF
+
+*** SUBCIRCUIT Vdd_Gnd_bus FROM CELL Vdd_Gnd_bus{sch}
+.SUBCKT Vdd_Gnd_bus gnd_1 vdd_1
+
+* Spice Code nodes in cell cell 'Vdd_Gnd_bus{sch}'
+R1 vdd_1 gnd_1 10g
+.ENDS Vdd_Gnd_bus
+
+*** SUBCIRCUIT Nact_PWell_diode FROM CELL Nact_PWell_diode{sch}
+.SUBCKT Nact_PWell_diode N_act P_well
+
+* Spice Code nodes in cell cell 'Nact_PWell_diode{sch}'
+D1 P_well N_act Dnpn
+.model Dnpn D is=1e-18 n=1
+.ENDS Nact_PWell_diode
+
+*** SUBCIRCUIT Pact_Nwell_diode FROM CELL Pact_Nwell_diode{sch}
+.SUBCKT Pact_Nwell_diode N_well P_act
+
+* Spice Code nodes in cell cell 'Pact_Nwell_diode{sch}'
+D2 P_act N_well Dpnp
+.model Dpnp D is=1e-18 n=1
+.ENDS Pact_Nwell_diode
+
+*** SUBCIRCUIT Pad_Gnd FROM CELL Pad_Gnd{sch}
+.SUBCKT Pad_Gnd GND_PAD dvdd
+XBus_Vdd_@0 GND_PAD dvdd Vdd_Gnd_bus
+XNact_PWe@0 GND_PAD GND_PAD Nact_PWell_diode
+XNwell_Pa@0 dvdd GND_PAD Pact_Nwell_diode
+.ENDS Pad_Gnd
+
+*** SUBCIRCUIT Pad_Analog FROM CELL Pad_Analog{sch}
+.SUBCKT Pad_Analog Analog gnd_1 vdd_1
+XNact_PWe@0 Analog gnd_1 Nact_PWell_diode
+XNwell_Pa@0 vdd_1 Analog Pact_Nwell_diode
+XVdd_Gnd_@0 gnd_1 vdd_1 Vdd_Gnd_bus
+.ENDS Pad_Analog
+
+*** SUBCIRCUIT Pad_I_O FROM CELL Pad_I_O{sch}
+.SUBCKT Pad_I_O D_In D_InB D_Out En dgnd dvdd pad
+Mnmos@0 pad pren dgnd dgnd NMOS L=0.6U W=60U
+Mnmos@1 D_InB pad dgnd dgnd NMOS L=0.6U W=15U
+Mnmos@2 D_In D_InB dgnd dgnd NMOS L=0.6U W=15U
+Mnmos@3 prep oe pren dgnd NMOS L=0.6U W=7.5U
+Mnmos@4 pren oeb dgnd dgnd NMOS L=0.6U W=7.5U
+Mnmos@5 oeb En dgnd dgnd NMOS L=0.6U W=1.8U
+Mnmos@6 oe oeb dgnd dgnd NMOS L=0.6U W=1.8U
+Mnmos@7 pren D_Out dgnd dgnd NMOS L=0.6U W=7.5U
+Mpmos@0 dvdd prep pad dvdd PMOS L=0.6U W=120U
+Mpmos@1 dvdd pad D_InB dvdd PMOS L=0.6U W=30U
+Mpmos@2 dvdd D_InB D_In dvdd PMOS L=0.6U W=30U
+Mpmos@3 dvdd oe prep dvdd PMOS L=0.6U W=15U
+Mpmos@4 prep oeb pren dvdd PMOS L=0.6U W=15U
+Mpmos@5 dvdd D_Out prep dvdd PMOS L=0.6U W=15U
+Mpmos@6 dvdd En oeb dvdd PMOS L=0.6U W=3.6U
+Mpmos@7 dvdd oeb oe dvdd PMOS L=0.6U W=3.6U
+XPAD_Anal@0 pad dgnd dvdd Pad_Analog
+.ENDS Pad_I_O
+
+*** SUBCIRCUIT Pad_Vdd FROM CELL Pad_Vdd{sch}
+.SUBCKT Pad_Vdd VDD_PAD dgnd
+XBus_Vdd_@1 dgnd VDD_PAD Vdd_Gnd_bus
+XNact_PWe@0 VDD_PAD dgnd Nact_PWell_diode
+XNwell_Pa@0 VDD_PAD VDD_PAD Pact_Nwell_diode
+.ENDS Pad_Vdd
+
+*** SUBCIRCUIT Digital_barepadframe_1_5mmX1_5mm FROM CELL
+*Digital_barepadframe_1.5mmX1.5mm{sch}
+.SUBCKT Digital_barepadframe_1_5mmX1_5mm D_InB_1 D_InB_10 D_InB_11 D_InB_12
++D_InB_13 D_InB_14 D_InB_15 D_InB_16 D_InB_17 D_InB_18 D_InB_19 D_InB_2
++D_InB_21 D_InB_22 D_InB_23 D_InB_24 D_InB_25 D_InB_26 D_InB_27 D_InB_28
++D_InB_29 D_InB_3 D_InB_30 D_InB_31 D_InB_32 D_InB_33 D_InB_34 D_InB_35
++D_InB_36 D_InB_37 D_InB_38 D_InB_39 D_InB_4 D_InB_5 D_InB_6 D_InB_7 D_InB_8
++D_InB_9 D_In_1 D_In_10 D_In_11 D_In_12 D_In_13 D_In_14 D_In_15 D_In_16
++D_In_17 D_In_18 D_In_19 D_In_2 D_In_21 D_In_22 D_In_23 D_In_24 D_In_25
++D_In_26 D_In_27 D_In_28 D_In_29 D_In_3 D_In_30 D_In_31 D_In_32 D_In_33
++D_In_34 D_In_35 D_In_36 D_In_37 D_In_38 D_In_39 D_In_4 D_In_5 D_In_6 D_In_7
++D_In_8 D_In_9 D_Out_1 D_Out_10 D_Out_11 D_Out_12 D_Out_13 D_Out_14 D_Out_15
++D_Out_16 D_Out_17 D_Out_18 D_Out_19 D_Out_2 D_Out_21 D_Out_22 D_Out_23
++D_Out_24 D_Out_25 D_Out_26 D_Out_27 D_Out_28 D_Out_29 D_Out_3 D_Out_30
++D_Out_31 D_Out_32 D_Out_33 D_Out_34 D_Out_35 D_Out_36 D_Out_37 D_Out_38
++D_Out_39 D_Out_4 D_Out_5 D_Out_6 D_Out_7 D_Out_8 D_Out_9 En_1 En_10 En_11
++En_12 En_13 En_14 En_15 En_16 En_17 En_18 En_19 En_2 En_21 En_22 En_23 En_24
++En_25 En_26 En_27 En_28 En_29 En_3 En_30 En_31 En_32 En_33 En_34 En_35 En_36
++En_37 En_38 En_39 En_4 En_5 En_6 En_7 En_8 En_9 Pin1 Pin10 Pin11 Pin12 Pin13
++Pin14 Pin15 Pin16 Pin17 Pin18 Pin19 Pin2 Pin21 Pin22 Pin23 Pin24 Pin25 Pin26
++Pin27 Pin28 Pin29 Pin3 Pin30 Pin31 Pin32 Pin33 Pin34 Pin35 Pin36 Pin37 Pin38
++Pin39 Pin4 Pin5 Pin6 Pin7 Pin8 Pin9 gnd vdd
+XPad_Gnd@0 gnd vdd Pad_Gnd
+XPad_I_O@0 D_In_25 D_InB_25 D_Out_25 En_25 gnd vdd Pin25 Pad_I_O
+XPad_I_O@1 D_In_24 D_InB_24 D_Out_24 En_24 gnd vdd Pin24 Pad_I_O
+XPad_I_O@2 D_In_23 D_InB_23 D_Out_23 En_23 gnd vdd Pin23 Pad_I_O
+XPad_I_O@3 D_In_22 D_InB_22 D_Out_22 En_22 gnd vdd Pin22 Pad_I_O
+XPad_I_O@4 D_In_21 D_InB_21 D_Out_21 En_21 gnd vdd Pin21 Pad_I_O
+XPad_I_O@6 D_In_19 D_InB_19 D_Out_19 En_19 gnd vdd Pin19 Pad_I_O
+XPad_I_O@7 D_In_18 D_InB_18 D_Out_18 En_18 gnd vdd Pin18 Pad_I_O
+XPad_I_O@8 D_In_17 D_InB_17 D_Out_17 En_17 gnd vdd Pin17 Pad_I_O
+XPad_I_O@9 D_In_16 D_InB_16 D_Out_16 En_16 gnd vdd Pin16 Pad_I_O
+XPad_I_O@10 D_In_15 D_InB_15 D_Out_15 En_15 gnd vdd Pin15 Pad_I_O
+XPad_I_O@11 D_In_14 D_InB_14 D_Out_14 En_14 gnd vdd Pin14 Pad_I_O
+XPad_I_O@12 D_In_13 D_InB_13 D_Out_13 En_13 gnd vdd Pin13 Pad_I_O
+XPad_I_O@13 D_In_12 D_InB_12 D_Out_12 En_12 gnd vdd Pin12 Pad_I_O
+XPad_I_O@14 D_In_11 D_InB_11 D_Out_11 En_11 gnd vdd Pin11 Pad_I_O
+XPad_I_O@15 D_In_10 D_InB_10 D_Out_10 En_10 gnd vdd Pin10 Pad_I_O
+XPad_I_O@16 D_In_9 D_InB_9 D_Out_9 En_9 gnd vdd Pin9 Pad_I_O
+XPad_I_O@17 D_In_8 D_InB_8 D_Out_8 En_8 gnd vdd Pin8 Pad_I_O
+XPad_I_O@18 D_In_7 D_InB_7 D_Out_7 En_7 gnd vdd Pin7 Pad_I_O
+XPad_I_O@19 D_In_6 D_InB_6 D_Out_6 En_6 gnd vdd Pin6 Pad_I_O
+XPad_I_O@20 D_In_5 D_InB_5 D_Out_5 En_5 gnd vdd Pin5 Pad_I_O
+XPad_I_O@21 D_In_4 D_InB_4 D_Out_4 En_4 gnd vdd Pin4 Pad_I_O
+XPad_I_O@22 D_In_3 D_InB_3 D_Out_3 En_3 gnd vdd Pin3 Pad_I_O
+XPad_I_O@23 D_In_2 D_InB_2 D_Out_2 En_2 gnd vdd Pin2 Pad_I_O
+XPad_I_O@24 D_In_1 D_InB_1 D_Out_1 En_1 gnd vdd Pin1 Pad_I_O
+XPad_I_O@26 D_In_39 D_InB_39 D_Out_39 En_39 gnd vdd Pin39 Pad_I_O
+XPad_I_O@27 D_In_38 D_InB_38 D_Out_38 En_38 gnd vdd Pin38 Pad_I_O
+XPad_I_O@28 D_In_37 D_InB_37 D_Out_37 En_37 gnd vdd Pin37 Pad_I_O
+XPad_I_O@29 D_In_36 D_InB_36 D_Out_36 En_36 gnd vdd Pin36 Pad_I_O
+XPad_I_O@30 D_In_35 D_InB_35 D_Out_35 En_35 gnd vdd Pin35 Pad_I_O
+XPad_I_O@31 D_In_34 D_InB_34 D_Out_34 En_34 gnd vdd Pin34 Pad_I_O
+XPad_I_O@32 D_In_33 D_InB_33 D_Out_33 En_33 gnd vdd Pin33 Pad_I_O
+XPad_I_O@33 D_In_32 D_InB_32 D_Out_32 En_32 gnd vdd Pin32 Pad_I_O
+XPad_I_O@34 D_In_31 D_InB_31 D_Out_31 En_31 gnd vdd Pin31 Pad_I_O
+XPad_I_O@35 D_In_30 D_InB_30 D_Out_30 En_30 gnd vdd Pin30 Pad_I_O
+XPad_I_O@36 D_In_29 D_InB_29 D_Out_29 En_29 gnd vdd Pin29 Pad_I_O
+XPad_I_O@37 D_In_28 D_InB_28 D_Out_28 En_28 gnd vdd Pin28 Pad_I_O
+XPad_I_O@38 D_In_27 D_InB_27 D_Out_27 En_27 gnd vdd Pin27 Pad_I_O
+XPad_I_O@39 D_In_26 D_InB_26 D_Out_26 En_26 gnd vdd Pin26 Pad_I_O
+XPad_Vdd@0 vdd gnd Pad_Vdd
+.ENDS Digital_barepadframe_1_5mmX1_5mm
+
+*** SUBCIRCUIT Inv_20_10 FROM CELL Inv_20_10{sch}
+.SUBCKT Inv_20_10 Vin Vout gnd vdd
+Mnmos@0 Vout Vin gnd gnd NMOS L=0.6U W=3U
+Mpmos@0 vdd Vin Vout vdd PMOS L=0.6U W=6U
+.ENDS Inv_20_10
+
+*** SUBCIRCUIT MUX_2to1 FROM CELL MUX_2to1{sch}
+.SUBCKT MUX_2to1 A B S Z
+** GLOBAL gnd
+** GLOBAL vdd
+MM1 A S Z vdd PMOS L=0.6U W=6U
+MM2 B net@31 Z vdd PMOS L=0.6U W=6U
+MM3 A net@31 Z gnd NMOS L=0.6U W=3U
+MM4 B S Z gnd NMOS L=0.6U W=3U
+XInv_20_1@0 S net@31 gnd vdd Inv_20_10
+.ENDS MUX_2to1
+
+*** SUBCIRCUIT NAND_2 FROM CELL NAND_2{sch}
+.SUBCKT NAND_2 A AnandB B
+** GLOBAL gnd
+** GLOBAL vdd
+Mnmos@0 AnandB A net@10 gnd NMOS L=0.6U W=3U
+Mnmos@1 net@10 B gnd gnd NMOS L=0.6U W=3U
+Mpmos@0 AnandB B vdd vdd PMOS L=0.6U W=6U
+Mpmos@1 AnandB A vdd vdd PMOS L=0.6U W=6U
+.ENDS NAND_2
+
+*** SUBCIRCUIT NOR_2 FROM CELL NOR_2{sch}
+.SUBCKT NOR_2 A AnorB B
+** GLOBAL gnd
+** GLOBAL vdd
+Mnmos@0 AnorB A gnd gnd NMOS L=0.6U W=3U
+Mnmos@1 AnorB B gnd gnd NMOS L=0.6U W=3U
+Mpmos@0 net@33 B vdd vdd PMOS L=0.6U W=6U
+Mpmos@1 AnorB A net@33 vdd PMOS L=0.6U W=6U
+.ENDS NOR_2
+
+*** SUBCIRCUIT Ringoscillator FROM CELL Ringoscillator{sch}
+.SUBCKT Ringoscillator Vosc gnd vdd
+XInv[0] Vosc in[1] gnd vdd Inv_20_10
+XInv[1] in[1] in[2] gnd vdd Inv_20_10
+XInv[2] in[2] in[3] gnd vdd Inv_20_10
+XInv[3] in[3] in[4] gnd vdd Inv_20_10
+XInv[4] in[4] in[5] gnd vdd Inv_20_10
+XInv[5] in[5] in[6] gnd vdd Inv_20_10
+XInv[6] in[6] in[7] gnd vdd Inv_20_10
+XInv[7] in[7] in[8] gnd vdd Inv_20_10
+XInv[8] in[8] in[9] gnd vdd Inv_20_10
+XInv[9] in[9] in[10] gnd vdd Inv_20_10
+XInv[10] in[10] in[11] gnd vdd Inv_20_10
+XInv[11] in[11] in[12] gnd vdd Inv_20_10
+XInv[12] in[12] in[13] gnd vdd Inv_20_10
+XInv[13] in[13] in[14] gnd vdd Inv_20_10
+XInv[14] in[14] in[15] gnd vdd Inv_20_10
+XInv[15] in[15] in[16] gnd vdd Inv_20_10
+XInv[16] in[16] in[17] gnd vdd Inv_20_10
+XInv[17] in[17] in[18] gnd vdd Inv_20_10
+XInv[18] in[18] in[19] gnd vdd Inv_20_10
+XInv[19] in[19] in[20] gnd vdd Inv_20_10
+XInv[20] in[20] in[21] gnd vdd Inv_20_10
+XInv[21] in[21] in[22] gnd vdd Inv_20_10
+XInv[22] in[22] in[23] gnd vdd Inv_20_10
+XInv[23] in[23] in[24] gnd vdd Inv_20_10
+XInv[24] in[24] in[25] gnd vdd Inv_20_10
+XInv[25] in[25] in[26] gnd vdd Inv_20_10
+XInv[26] in[26] in[27] gnd vdd Inv_20_10
+XInv[27] in[27] in[28] gnd vdd Inv_20_10
+XInv[28] in[28] in[29] gnd vdd Inv_20_10
+XInv[29] in[29] in[30] gnd vdd Inv_20_10
+XInv[30] in[30] in[31] gnd vdd Inv_20_10
+XInv[31] in[31] in[32] gnd vdd Inv_20_10
+XInv[32] in[32] in[33] gnd vdd Inv_20_10
+XInv[33] in[33] in[34] gnd vdd Inv_20_10
+XInv[34] in[34] in[35] gnd vdd Inv_20_10
+XInv[35] in[35] in[36] gnd vdd Inv_20_10
+XInv[36] in[36] in[37] gnd vdd Inv_20_10
+XInv[37] in[37] in[38] gnd vdd Inv_20_10
+XInv[38] in[38] in[39] gnd vdd Inv_20_10
+XInv[39] in[39] in[40] gnd vdd Inv_20_10
+XInv[40] in[40] in[41] gnd vdd Inv_20_10
+XInv[41] in[41] in[42] gnd vdd Inv_20_10
+XInv[42] in[42] in[43] gnd vdd Inv_20_10
+XInv[43] in[43] in[44] gnd vdd Inv_20_10
+XInv[44] in[44] in[45] gnd vdd Inv_20_10
+XInv[45] in[45] in[46] gnd vdd Inv_20_10
+XInv[46] in[46] in[47] gnd vdd Inv_20_10
+XInv[47] in[47] in[48] gnd vdd Inv_20_10
+XInv[48] in[48] in[49] gnd vdd Inv_20_10
+XInv[49] in[49] in[50] gnd vdd Inv_20_10
+XInv[50] in[50] in[51] gnd vdd Inv_20_10
+XInv[51] in[51] in[52] gnd vdd Inv_20_10
+XInv[52] in[52] in[53] gnd vdd Inv_20_10
+XInv[53] in[53] in[54] gnd vdd Inv_20_10
+XInv[54] in[54] in[55] gnd vdd Inv_20_10
+XInv[55] in[55] in[56] gnd vdd Inv_20_10
+XInv[56] in[56] in[57] gnd vdd Inv_20_10
+XInv[57] in[57] in[58] gnd vdd Inv_20_10
+XInv[58] in[58] in[59] gnd vdd Inv_20_10
+XInv[59] in[59] in[60] gnd vdd Inv_20_10
+XInv[60] in[60] Vosc gnd vdd Inv_20_10
+.ENDS Ringoscillator
+
+.global gnd vdd
+
+*** TOP LEVEL CELL: sim_Digital_padframe{sch}
+XDigital_@0 Digital_@0_D_InB_1 Digital_@0_D_InB_10 Digital_@0_D_InB_11
++Digital_@0_D_InB_12 Digital_@0_D_InB_13 Digital_@0_D_InB_14
++Digital_@0_D_InB_15 Digital_@0_D_InB_16 Digital_@0_D_InB_17
++Digital_@0_D_InB_18 Digital_@0_D_InB_19 Digital_@0_D_InB_2
++Digital_@0_D_InB_21 Digital_@0_D_InB_22 Digital_@0_D_InB_23
++Digital_@0_D_InB_24 Digital_@0_D_InB_25 Digital_@0_D_InB_26
++Digital_@0_D_InB_27 Digital_@0_D_InB_28 Digital_@0_D_InB_29
++Digital_@0_D_InB_3 Digital_@0_D_InB_30 Digital_@0_D_InB_31
++Digital_@0_D_InB_32 Digital_@0_D_InB_33 Digital_@0_D_InB_34
++Digital_@0_D_InB_35 Digital_@0_D_InB_36 Digital_@0_D_InB_37
++Digital_@0_D_InB_38 Digital_@0_D_InB_39 Digital_@0_D_InB_4 Digital_@0_D_InB_5
++Digital_@0_D_InB_6 Digital_@0_D_InB_7 Digital_@0_D_InB_8 Digital_@0_D_InB_9
++Digital_@0_D_In_1 Digital_@0_D_In_10 Digital_@0_D_In_11 Digital_@0_D_In_12
++Digital_@0_D_In_13 Digital_@0_D_In_14 Digital_@0_D_In_15 Digital_@0_D_In_16
++Digital_@0_D_In_17 Digital_@0_D_In_18 Digital_@0_D_In_19 Digital_@0_D_In_2
++Digital_@0_D_In_21 Digital_@0_D_In_22 Digital_@0_D_In_23 Digital_@0_D_In_24
++Digital_@0_D_In_25 Digital_@0_D_In_26 Digital_@0_D_In_27 Digital_@0_D_In_28
++Digital_@0_D_In_29 Digital_@0_D_In_3 Digital_@0_D_In_30 Digital_@0_D_In_31
++Digital_@0_D_In_32 Digital_@0_D_In_33 Digital_@0_D_In_34 Digital_@0_D_In_35
++Digital_@0_D_In_36 Digital_@0_D_In_37 Digital_@0_D_In_38 Digital_@0_D_In_39
++Digital_@0_D_In_4 Digital_@0_D_In_5 Digital_@0_D_In_6 Digital_@0_D_In_7
++Digital_@0_D_In_8 Digital_@0_D_In_9 Vosc mux_in2 net@576 gnd gnd gnd gnd gnd
++net@515 nor_2 nor_1 gnd gnd gnd gnd gnd gnd gnd gnd gnd gnd net@467 gnd gnd
++gnd gnd gnd gnd gnd gnd gnd gnd nand_2 nand_1 gnd gnd S mux_in1 vdd vdd vdd
++gnd gnd gnd gnd gnd vdd vdd vdd gnd gnd gnd gnd gnd gnd gnd gnd gnd gnd vdd
++gnd gnd gnd gnd gnd gnd gnd gnd gnd gnd vdd vdd gnd gnd vdd vdd Pin1 Pin10
++Pin11 gnd gnd gnd gnd gnd Pin17 Pin18 Pin19 gnd gnd gnd gnd gnd gnd gnd gnd
++gnd gnd Pin3 gnd gnd gnd gnd gnd gnd gnd gnd gnd gnd Pin4 Pin5 gnd gnd Pin8
++Pin9 gnd vdd Digital_barepadframe_1_5mmX1_5mm
+XMUX_2to1@0 Pin10 Pin9 Pin8 net@576 MUX_2to1
+XNAND_2@0 Pin4 net@467 Pin5 NAND_2
+XNOR_2@0 Pin18 net@515 Pin19 NOR_2
+XRingosci@0 Vosc gnd vdd Ringoscillator
+
+* Spice Code nodes in cell cell 'sim_Digital_padframe{sch}'
+vdd vdd 0 dc 5
+vgnd gnd 0 dc 0
+CC1 Pin1 0 10p
+.ic V(Vosc)=5
+Vnand_2 nand_2 0 dc 0 pulse 0 5 1n 10p 10p 20n 40n
+Vnand_1 nand_1 0 dc 0 pulse 0 5 1n 10p 10p 10n 40n
+Vnor_2 nor_2 0 dc 0 pulse 0 5 1n 10p 10p 10n 30n
+Vnor_1 nor_1 0 dc 0 pulse 0 5 1n 10p 10p 20n 40n
+Vmux_in1 mux_in1 0 dc 0 pulse 0 5 1n 10p 10p 5n 10n
+Vmux_in2 mux_in2 0 dc 0 pulse 0 5 1n 10p 10p 10n 40n
+VS S 0 dc 0 pulse 5 0 1n 10p 10p 50n 100n
+*.save V(Pin1) V(Vosc) V(nand_1) V(nand_2) V(Pin4)
+.include C5_models.txt
+.tran 10p 100n
+.END

@@ -1,0 +1,39 @@
+*** SPICE deck for cell AND_gate{sch} from library ServetCelik_ELE419_Project
+*** Created on Pzt Oca 01, 2024 16:18:46
+*** Last revised on Pzt Oca 01, 2024 16:30:28
+*** Written on Pzt Oca 01, 2024 16:30:33 by Electric VLSI Design System, version 9.07
+*** Layout tech: mocmos, foundry MOSIS
+*** UC SPICE *** , MIN_RESIST 4.0, MIN_CAPAC 0.1FF
+
+*** SUBCIRCUIT ServetCelik_ELE419_Project__NAND_gate FROM CELL NAND_gate{sch}
+.SUBCKT ServetCelik_ELE419_Project__NAND_gate A A_nand_B B
+** GLOBAL 0
+** GLOBAL vdd
+Mnmos_0 A_nand_B A net_14 0 N L=0.6U W=0.6U
+Mnmos_1 net_14 B 0 0 N L=0.6U W=0.6U
+Mpmos_0 vdd A A_nand_B vdd P L=0.6U W=0.6U
+Mpmos_1 vdd B A_nand_B vdd P L=0.6U W=0.6U
+.ENDS ServetCelik_ELE419_Project__NAND_gate
+
+*** SUBCIRCUIT ServetCelik_ELE419_Project__inverter FROM CELL inverter{sch}
+.SUBCKT ServetCelik_ELE419_Project__inverter A A_not
+** GLOBAL 0
+** GLOBAL vdd
+Mnmos_0 A_not A 0 0 N L=0.6U W=0.6U
+Mpmos_0 vdd A A_not vdd P L=0.6U W=1.2U
+.ENDS ServetCelik_ELE419_Project__inverter
+
+.global 0 vdd
+
+*** TOP LEVEL CELL: AND_gate{sch}
+XNAND_gat_0 A net_0 B ServetCelik_ELE419_Project__NAND_gate
+Xinverter_0 net_0 A_and_B ServetCelik_ELE419_Project__inverter
+
+* Spice Code nodes in cell cell 'AND_gate{sch}'
+vdd vdd 0 DC 5
+VinA A 0 pulse (5 0 0 0.1u 0.1u 20u 40u)
+VinB B 0 pulse (0 5 0 0.1u 0.1u 10u 20u)
+.tran 10u 80u 20u
+* Trailer cards are described in this file:
+.INC C:\Users\Servet\Desktop\C5_models.txt
+.END

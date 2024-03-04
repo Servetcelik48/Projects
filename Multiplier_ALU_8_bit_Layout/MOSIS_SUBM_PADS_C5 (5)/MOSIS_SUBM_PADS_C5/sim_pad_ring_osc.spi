@@ -1,0 +1,185 @@
+*** SPICE deck for cell sim_pad_ring_osc{lay} from library MOSIS_SUBM_PADS_C5
+*** Created on Wed Sep 23, 2009 12:37:31
+*** Last revised on Sun Nov 21, 2010 14:40:40
+*** Written on Sun Nov 21, 2010 18:28:42 by Electric VLSI Design System, 
+*version 9.00-q
+*** Layout tech: mocmos, foundry MOSIS
+*** UC SPICE *** , MIN_RESIST 4.0, MIN_CAPAC 0.1FF
+
+*** SUBCIRCUIT Nact_PWell_diode FROM CELL Nact_PWell_diode{lay}
+.SUBCKT Nact_PWell_diode N_act P_well
+
+* Spice Code nodes in cell cell 'Nact_PWell_diode{lay}'
+D1 P_well N_act Dnpn
+.model Dnpn D is=1e-18 n=1
+.ENDS Nact_PWell_diode
+
+*** SUBCIRCUIT Pact_Nwell_diode FROM CELL Pact_Nwell_diode{lay}
+.SUBCKT Pact_Nwell_diode N_well P_act
+
+* Spice Code nodes in cell cell 'Pact_Nwell_diode{lay}'
+D2 P_act N_well Dpnp
+.model Dpnp D is=1e-18 n=1
+.ENDS Pact_Nwell_diode
+
+*** SUBCIRCUIT Vdd_Gnd_bus FROM CELL Vdd_Gnd_bus{lay}
+.SUBCKT Vdd_Gnd_bus gnd_1 vdd_1
+
+* Spice Code nodes in cell cell 'Vdd_Gnd_bus{lay}'
+R1 vdd_1 gnd_1 10g
+.ENDS Vdd_Gnd_bus
+
+*** SUBCIRCUIT Pad_Analog FROM CELL Pad_Analog{lay}
+.SUBCKT Pad_Analog Analog gnd_1 vdd_1
+XNact_PWe@0 Analog gnd_1 Nact_PWell_diode
+XNwell_Pa@0 vdd_1 Analog Pact_Nwell_diode
+XVdd_Gnd_@0 gnd_1 vdd_1 Vdd_Gnd_bus
+.ENDS Pad_Analog
+
+*** SUBCIRCUIT Pad_I_O FROM CELL Pad_I_O{lay}
+.SUBCKT Pad_I_O D_In D_InB D_Out En dgnd dvdd pad
+XPAD_Anal@0 pad dgnd dvdd Pad_Analog
+Mnmos@0 net@10 En dgnd dgnd NMOS L=0.6U W=1.8U AS=29.981P AD=5.062P PS=37.65U 
++PD=9.15U
+Mnmos@1 dgnd net@10 net@12 dgnd NMOS L=0.6U W=1.8U AS=4.86P AD=29.981P PS=9U 
++PD=37.65U
+Mnmos@2 net@31 net@12 net@29 dgnd NMOS L=0.6U W=7.5U AS=24.891P AD=15.609P 
++PS=22.65U PD=18.037U
+Mnmos@3 dgnd D_Out net@31 dgnd NMOS L=0.6U W=7.5U AS=15.609P AD=29.981P 
++PS=18.037U PD=37.65U
+Mnmos@4 net@31 net@10 dgnd dgnd NMOS L=0.6U W=7.5U AS=29.981P AD=15.609P 
++PS=37.65U PD=18.037U
+Mnmos@5 dgnd net@31 pad dgnd NMOS L=0.6U W=15U AS=20.625P AD=29.981P 
++PS=22.75U PD=37.65U
+Mnmos@6 dgnd net@31 pad dgnd NMOS L=0.6U W=15U AS=20.625P AD=29.981P 
++PS=22.75U PD=37.65U
+Mnmos@7 pad net@31 dgnd dgnd NMOS L=0.6U W=15U AS=29.981P AD=20.625P 
++PS=37.65U PD=22.75U
+Mnmos@8 pad net@31 dgnd dgnd NMOS L=0.6U W=15U AS=29.981P AD=20.625P 
++PS=37.65U PD=22.75U
+Mnmos@9 D_InB pad dgnd dgnd NMOS L=0.6U W=15U AS=29.981P AD=27P PS=37.65U 
++PD=33.6U
+Mnmos@10 dgnd D_InB D_In dgnd NMOS L=0.6U W=15U AS=35.625P AD=29.981P 
++PS=34.75U PD=37.65U
+Mpmos@0 net@10 En dvdd dvdd PMOS L=0.6U W=3.6U AS=26.156P AD=5.062P 
++PS=28.753U PD=9.15U
+Mpmos@1 dvdd net@10 net@12 dvdd PMOS L=0.6U W=3.6U AS=4.86P AD=26.156P PS=9U 
++PD=28.753U
+Mpmos@2 dvdd D_Out net@29 dvdd PMOS L=0.6U W=15U AS=24.891P AD=26.156P 
++PS=22.65U PD=28.753U
+Mpmos@3 net@29 net@10 net@31 dvdd PMOS L=0.6U W=15U AS=15.609P AD=24.891P 
++PS=18.037U PD=22.65U
+Mpmos@4 net@29 net@12 dvdd dvdd PMOS L=0.6U W=15U AS=26.156P AD=24.891P 
++PS=28.753U PD=22.65U
+Mpmos@5 dvdd net@29 pad dvdd PMOS L=0.6U W=15U AS=20.625P AD=26.156P 
++PS=22.75U PD=28.753U
+Mpmos@6 dvdd net@29 pad dvdd PMOS L=0.6U W=15U AS=20.625P AD=26.156P 
++PS=22.75U PD=28.753U
+Mpmos@7 pad net@29 dvdd dvdd PMOS L=0.6U W=15U AS=26.156P AD=20.625P 
++PS=28.753U PD=22.75U
+Mpmos@8 pad net@29 dvdd dvdd PMOS L=0.6U W=15U AS=26.156P AD=20.625P 
++PS=28.753U PD=22.75U
+Mpmos@9 dvdd net@29 pad dvdd PMOS L=0.6U W=15U AS=20.625P AD=26.156P 
++PS=22.75U PD=28.753U
+Mpmos@10 dvdd net@29 pad dvdd PMOS L=0.6U W=15U AS=20.625P AD=26.156P 
++PS=22.75U PD=28.753U
+Mpmos@11 pad net@29 dvdd dvdd PMOS L=0.6U W=15U AS=26.156P AD=20.625P 
++PS=28.753U PD=22.75U
+Mpmos@12 pad net@29 dvdd dvdd PMOS L=0.6U W=15U AS=26.156P AD=20.625P 
++PS=28.753U PD=22.75U
+Mpmos@13 dvdd pad D_InB dvdd PMOS L=0.6U W=15U AS=27P AD=26.156P PS=33.6U 
++PD=28.753U
+Mpmos@14 dvdd pad D_InB dvdd PMOS L=0.6U W=15U AS=27P AD=26.156P PS=33.6U 
++PD=28.753U
+Mpmos@15 D_In D_InB dvdd dvdd PMOS L=0.6U W=15U AS=26.156P AD=35.625P 
++PS=28.753U PD=34.75U
+Mpmos@16 D_In D_InB dvdd dvdd PMOS L=0.6U W=15U AS=26.156P AD=35.625P 
++PS=28.753U PD=34.75U
+.ENDS Pad_I_O
+
+*** SUBCIRCUIT Inv_20_10 FROM CELL Inv_20_10{lay}
+.SUBCKT Inv_20_10 Vin Vout gnd vdd
+Mnmos@0 Vout Vin gnd gnd NMOS L=0.6U W=3U AS=13.5P AD=7.425P PS=23.7U 
++PD=12.3U
+Mpmos@0 Vout Vin vdd vdd PMOS L=0.6U W=6U AS=18.45P AD=7.425P PS=29.7U 
++PD=12.3U
+.ENDS Inv_20_10
+
+*** SUBCIRCUIT Ringoscillator FROM CELL Ringoscillator{lay}
+.SUBCKT Ringoscillator Vosc gnd vdd
+XInv_20_1@0 net@492 net@346 gnd vdd Inv_20_10
+XInv_20_1@1 net@346 net@355 gnd vdd Inv_20_10
+XInv_20_1@2 net@355 net@365 gnd vdd Inv_20_10
+XInv_20_1@3 net@365 net@375 gnd vdd Inv_20_10
+XInv_20_1@4 net@375 net@385 gnd vdd Inv_20_10
+XInv_20_1@5 net@385 net@395 gnd vdd Inv_20_10
+XInv_20_1@6 net@395 net@397 gnd vdd Inv_20_10
+XInv_20_1@7 net@397 net@398 gnd vdd Inv_20_10
+XInv_20_1@8 net@398 net@400 gnd vdd Inv_20_10
+XInv_20_1@9 net@400 net@399 gnd vdd Inv_20_10
+XInv_20_1@10 net@399 Vosc gnd vdd Inv_20_10
+XInv_20_1@11 net@487 net@347 gnd vdd Inv_20_10
+XInv_20_1@12 net@347 net@348 gnd vdd Inv_20_10
+XInv_20_1@13 net@348 net@349 gnd vdd Inv_20_10
+XInv_20_1@14 net@349 net@350 gnd vdd Inv_20_10
+XInv_20_1@15 net@350 net@351 gnd vdd Inv_20_10
+XInv_20_1@16 net@351 net@352 gnd vdd Inv_20_10
+XInv_20_1@17 net@352 net@353 gnd vdd Inv_20_10
+XInv_20_1@18 net@353 net@354 gnd vdd Inv_20_10
+XInv_20_1@19 net@354 net@356 gnd vdd Inv_20_10
+XInv_20_1@20 net@356 net@492 gnd vdd Inv_20_10
+XInv_20_1@21 net@482 net@357 gnd vdd Inv_20_10
+XInv_20_1@22 net@357 net@358 gnd vdd Inv_20_10
+XInv_20_1@23 net@358 net@359 gnd vdd Inv_20_10
+XInv_20_1@24 net@359 net@360 gnd vdd Inv_20_10
+XInv_20_1@25 net@360 net@361 gnd vdd Inv_20_10
+XInv_20_1@26 net@361 net@362 gnd vdd Inv_20_10
+XInv_20_1@27 net@362 net@363 gnd vdd Inv_20_10
+XInv_20_1@28 net@363 net@364 gnd vdd Inv_20_10
+XInv_20_1@29 net@364 net@366 gnd vdd Inv_20_10
+XInv_20_1@30 net@366 net@487 gnd vdd Inv_20_10
+XInv_20_1@31 net@476 net@367 gnd vdd Inv_20_10
+XInv_20_1@32 net@367 net@368 gnd vdd Inv_20_10
+XInv_20_1@33 net@368 net@369 gnd vdd Inv_20_10
+XInv_20_1@34 net@369 net@370 gnd vdd Inv_20_10
+XInv_20_1@35 net@370 net@371 gnd vdd Inv_20_10
+XInv_20_1@36 net@371 net@372 gnd vdd Inv_20_10
+XInv_20_1@37 net@372 net@373 gnd vdd Inv_20_10
+XInv_20_1@38 net@373 net@374 gnd vdd Inv_20_10
+XInv_20_1@39 net@374 net@376 gnd vdd Inv_20_10
+XInv_20_1@40 net@376 net@482 gnd vdd Inv_20_10
+XInv_20_1@41 net@471 net@377 gnd vdd Inv_20_10
+XInv_20_1@42 net@377 net@378 gnd vdd Inv_20_10
+XInv_20_1@43 net@378 net@379 gnd vdd Inv_20_10
+XInv_20_1@44 net@379 net@380 gnd vdd Inv_20_10
+XInv_20_1@45 net@380 net@381 gnd vdd Inv_20_10
+XInv_20_1@46 net@381 net@382 gnd vdd Inv_20_10
+XInv_20_1@47 net@382 net@383 gnd vdd Inv_20_10
+XInv_20_1@48 net@383 net@384 gnd vdd Inv_20_10
+XInv_20_1@49 net@384 net@386 gnd vdd Inv_20_10
+XInv_20_1@50 net@386 net@476 gnd vdd Inv_20_10
+XInv_20_1@51 Vosc net@387 gnd vdd Inv_20_10
+XInv_20_1@52 net@387 net@388 gnd vdd Inv_20_10
+XInv_20_1@53 net@388 net@389 gnd vdd Inv_20_10
+XInv_20_1@54 net@389 net@390 gnd vdd Inv_20_10
+XInv_20_1@55 net@390 net@391 gnd vdd Inv_20_10
+XInv_20_1@56 net@391 net@392 gnd vdd Inv_20_10
+XInv_20_1@57 net@392 net@393 gnd vdd Inv_20_10
+XInv_20_1@58 net@393 net@394 gnd vdd Inv_20_10
+XInv_20_1@59 net@394 net@396 gnd vdd Inv_20_10
+XInv_20_1@60 net@396 net@471 gnd vdd Inv_20_10
+.ENDS Ringoscillator
+
+*** TOP LEVEL CELL: sim_pad_ring_osc{lay}
+XPad_I_O@1 D_In D_InB osc En gnd vdd Osc_Pad Pad_I_O
+XRingosci@1 osc gnd vdd Ringoscillator
+
+* Spice Code nodes in cell cell 'sim_pad_ring_osc{lay}'
+vdd vdd 0 dc 5
+vgnd gnd 0 dc 0
+CC1 Osc_Pad 0 10p
+VEn En 0 dc 5
+.ic V(osc)=5
+.include C5_models.txt
+.tran 10p 100n
+.END

@@ -1,0 +1,67 @@
+*** SPICE deck for cell Opamp_3Stage_1_Sim_Op{sch} from library 
+*MOSIS_SUBM_PADS_C5
+*** Created on Thu Feb 22, 2007 19:29:30
+*** Last revised on Sun Jan 11, 2009 10:17:49
+*** Written on Sun Oct 30, 2011 08:24:54 by Electric VLSI Design System, 
+*version 9.01
+*** Layout tech: mocmos, foundry MOSIS
+*** UC SPICE *** , MIN_RESIST 4.0, MIN_CAPAC 0.1FF
+
+*** SUBCIRCUIT Bias_Circuit_2 FROM CELL Bias_Circuit_2{sch}
+.SUBCKT Bias_Circuit_2 Vbiasn Vbiasp
+** GLOBAL gnd
+** GLOBAL vdd
+Mnmos@6 Vbiasn Vbiasn gnd gnd NMOS L=0.6U W=3U
+Mpmos@3 Vbiasp Vbiasp vdd vdd PMOS L=0.6U W=6.6U
+Mpmos@4 Vbiasn Vbiasp vdd vdd PMOS L=0.6U W=6.6U
+.ENDS Bias_Circuit_2
+
+*** SUBCIRCUIT cap_1_5pF FROM CELL cap_1_5pF{sch}
+.SUBCKT cap_1_5pF P1 P2
+
+* Spice Code nodes in cell cell 'cap_1_5pF{sch}'
+CP1P2 P1 P2 1.5p
+Cb P1 0 150f
+.ENDS cap_1_5pF
+
+*** SUBCIRCUIT Opamp_3Stage_1 FROM CELL Opamp_3Stage_1{sch}
+.SUBCKT Opamp_3Stage_1 Vbiasp Vm Vout Vp gnd vdd
+** GLOBAL gnd
+** GLOBAL vdd
+Mnmos@2 net@7 Vm fbl gnd NMOS L=0.6U W=6U
+Mnmos@3 fbl Vm net@122 gnd NMOS L=0.6U W=6U
+Mnmos@4 net@8 Vp fbr gnd NMOS L=0.6U W=6U
+Mnmos@5 fbr Vp net@122 gnd NMOS L=0.6U W=6U
+Mnmos@7 net@122 Vbiasn gnd gnd NMOS L=0.6U W=3U
+Mnmos@9 net@122 Vbiasn gnd gnd NMOS L=0.6U W=3U
+Mnmos@10 net@74 net@74 gnd gnd NMOS L=0.6U W=3U
+Mnmos@11 net@76 net@74 gnd gnd NMOS L=0.6U W=3U
+Mnmos@14 Vout net@76 gnd gnd NMOS L=0.6U W=30U
+Mpmos@1 net@7 net@7 vdd vdd PMOS L=0.6U W=6.6U
+Mpmos@2 net@8 net@7 vdd vdd PMOS L=0.6U W=6.6U
+Mpmos@3 net@60 Vbiasp vdd vdd PMOS L=0.6U W=6.6U
+Mpmos@4 net@60 Vbiasp vdd vdd PMOS L=0.6U W=6.6U
+Mpmos@5 net@74 net@8 net@60 vdd PMOS L=0.6U W=19.8U
+Mpmos@6 net@76 net@7 net@60 vdd PMOS L=0.6U W=19.8U
+Mpmos@7 Vout net@8 vdd vdd PMOS L=0.6U W=66U
+XBias_Cir@0 Vbiasn Vbiasp Bias_Circuit_2
+Xcap_1_5p@2 net@76 fbl cap_1_5pF
+Xcap_1_5p@3 Vout fbr cap_1_5pF
+.ENDS Opamp_3Stage_1
+
+.global gnd vdd
+
+*** TOP LEVEL CELL: Opamp_3Stage_1_Sim_Op{sch}
+Ccap@0 Vm gnd 10u
+Ccap@1 gnd Vout 30p
+Rres@0 Vout Vm 10000k
+XOpamp_3S@0 Vbiasp Vm Vout Vp gnd vdd Opamp_3Stage_1
+
+* Spice Code nodes in cell cell 'Opamp_3Stage_1_Sim_Op{sch}'
+VDD VDD 0 DC 5
+VGND GND 0 DC 0
+Ibias Vbiasp 0 DC 20u
+VCM Vp 0 2.5 AC 1
+.include C5_models.txt
+.op
+.END

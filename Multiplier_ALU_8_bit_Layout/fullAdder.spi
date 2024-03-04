@@ -1,0 +1,77 @@
+*** SPICE deck for cell fullAdder{lay} from library ServetCelik_ELE419_Project
+*** Created on Pzt Oca 01, 2024 17:14:58
+*** Last revised on Pzt Oca 01, 2024 17:48:24
+*** Written on Pzt Oca 01, 2024 17:48:34 by Electric VLSI Design System, version 9.07
+*** Layout tech: mocmos, foundry MOSIS
+*** UC SPICE *** , MIN_RESIST 4.0, MIN_CAPAC 0.1FF
+
+*** SUBCIRCUIT ServetCelik_ELE419_Project__NOR_gate FROM CELL NOR_gate{lay}
+.SUBCKT ServetCelik_ELE419_Project__NOR_gate 0 A A_nor_B B vdd
+Mnmos_2 A_nor_B A 0 0 N L=0.6U W=1.2U AS=6.525P AD=3.21P PS=13.5U PD=6.1U
+Mnmos_3 0 B A_nor_B 0 N L=0.6U W=1.2U AS=3.21P AD=6.525P PS=6.1U PD=13.5U
+Mpmos_2 net_75 A vdd vdd P L=0.6U W=2.4U AS=13.05P AD=1.418P PS=22.5U PD=4.05U
+Mpmos_3 A_nor_B B net_75 vdd P L=0.6U W=2.4U AS=1.418P AD=3.21P PS=4.05U PD=6.1U
+.ENDS ServetCelik_ELE419_Project__NOR_gate
+
+*** SUBCIRCUIT ServetCelik_ELE419_Project__inverter FROM CELL inverter{lay}
+.SUBCKT ServetCelik_ELE419_Project__inverter 0 A A_not vdd
+Mnmos_0 A_not A 0 0 N L=0.6U W=1.2U AS=9.9P AD=4.725P PS=19.5U PD=9U
+Mpmos_0 A_not A vdd vdd P L=0.6U W=2.4U AS=13.05P AD=4.725P PS=22.5U PD=9U
+.ENDS ServetCelik_ELE419_Project__inverter
+
+*** SUBCIRCUIT ServetCelik_ELE419_Project__OR_gate FROM CELL OR_gate{lay}
+.SUBCKT ServetCelik_ELE419_Project__OR_gate 0 A A_or_B B vdd
+XNOR_gate_0 0 A net_0 B vdd ServetCelik_ELE419_Project__NOR_gate
+Xinverter_0 0 net_0 A_or_B vdd ServetCelik_ELE419_Project__inverter
+.ENDS ServetCelik_ELE419_Project__OR_gate
+
+*** SUBCIRCUIT ServetCelik_ELE419_Project__NAND_gate FROM CELL NAND_gate{lay}
+.SUBCKT ServetCelik_ELE419_Project__NAND_gate 0 A A_nand_B B vdd
+Mnmos_0 net_34 B A_nand_B 0 N L=0.6U W=2.4U AS=4.56P AD=1.418P PS=7.3U PD=4.05U
+Mnmos_1 0 A net_34 0 N L=0.6U W=2.4U AS=1.418P AD=16.83P PS=4.05U PD=27.9U
+Mpmos_0 A_nand_B A vdd vdd P L=0.6U W=2.4U AS=13.05P AD=4.56P PS=21U PD=7.3U
+Mpmos_1 vdd B A_nand_B vdd P L=0.6U W=2.4U AS=4.56P AD=13.05P PS=7.3U PD=21U
+.ENDS ServetCelik_ELE419_Project__NAND_gate
+
+*** SUBCIRCUIT ServetCelik_ELE419_Project__AND_gate FROM CELL AND_gate{lay}
+.SUBCKT ServetCelik_ELE419_Project__AND_gate 0 A A_and_B B vdd
+XNAND_gat_1 0 A net_0 B vdd ServetCelik_ELE419_Project__NAND_gate
+Xinverter_1 0 net_0 A_and_B vdd ServetCelik_ELE419_Project__inverter
+.ENDS ServetCelik_ELE419_Project__AND_gate
+
+*** SUBCIRCUIT ServetCelik_ELE419_Project__XOR_gate FROM CELL XOR_gate{lay}
+.SUBCKT ServetCelik_ELE419_Project__XOR_gate 0 A A_xor_B B vdd
+Mnmos_7 net_258 B 0 0 N L=0.6U W=1.2U AS=5.783P AD=1.845P PS=11.7U PD=4.2U
+Mnmos_8 A_xor_B A net_258 0 N L=0.6U W=1.2U AS=1.845P AD=2.858P PS=4.2U PD=5.1U
+Mnmos_9 net_259 net_263 A_xor_B 0 N L=0.6U W=1.2U AS=2.858P AD=2.025P PS=5.1U PD=4.5U
+Mnmos_10 0 net_230 net_259 0 N L=0.6U W=1.2U AS=2.025P AD=5.783P PS=4.5U PD=11.7U
+Mnmos_11 net_263 A 0 0 N L=0.6U W=1.2U AS=5.783P AD=4.185P PS=11.7U PD=8.4U
+Mnmos_12 net_230 B 0 0 N L=0.6U W=1.2U AS=5.783P AD=4.725P PS=11.7U PD=9U
+Mpmos_10 A_xor_B B net_199 vdd P L=0.6U W=2.4U AS=4.995P AD=2.858P PS=8.1U PD=5.1U
+Mpmos_11 net_199 A A_xor_B vdd P L=0.6U W=2.4U AS=2.858P AD=4.995P PS=5.1U PD=8.1U
+Mpmos_12 vdd net_263 net_199 vdd P L=0.6U W=2.4U AS=4.995P AD=7.808P PS=8.1U PD=12.6U
+Mpmos_13 net_199 net_230 vdd vdd P L=0.6U W=2.4U AS=7.808P AD=4.995P PS=12.6U PD=8.1U
+Mpmos_14 net_263 A vdd vdd P L=0.6U W=2.4U AS=7.808P AD=4.185P PS=12.6U PD=8.4U
+Mpmos_15 net_230 B vdd vdd P L=0.6U W=2.4U AS=7.808P AD=4.725P PS=12.6U PD=9U
+.ENDS ServetCelik_ELE419_Project__XOR_gate
+
+*** SUBCIRCUIT ServetCelik_ELE419_Project__halfAdder FROM CELL halfAdder{lay}
+.SUBCKT ServetCelik_ELE419_Project__halfAdder 0 A B halfAdder_carry halfAdder_sum vdd
+XAND_gate_1 0 A halfAdder_carry B vdd ServetCelik_ELE419_Project__AND_gate
+XXOR_gate_1 0 A halfAdder_sum B vdd ServetCelik_ELE419_Project__XOR_gate
+.ENDS ServetCelik_ELE419_Project__halfAdder
+
+*** TOP LEVEL CELL: fullAdder{lay}
+XOR_gate_0 0 net_11 fullAdder_carry net_6 vdd ServetCelik_ELE419_Project__OR_gate
+XhalfAdde_0 0 A B net_11 net_2 vdd ServetCelik_ELE419_Project__halfAdder
+XhalfAdde_1 0 net_2 Cin net_6 fullAdder_sum vdd ServetCelik_ELE419_Project__halfAdder
+
+* Spice Code nodes in cell cell 'fullAdder{lay}'
+vdd vdd 0 DC 5
+VinA A 0 pulse (5 0 0 0.1u 0.1u 20u 40u)
+VinB B 0 pulse (0 5 0 0.1u 0.1u 10u 20u)
+VinCin Cin 0 pulse (0 5 0 0.1u 0.1u 5u 10u)
+.tran 10u 40u
+* Trailer cards are described in this file:
+.INC C:\Users\Servet\Desktop\C5_models.txt
+.END

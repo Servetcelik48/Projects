@@ -1,0 +1,46 @@
+Circuit: *** SPICE deck for cell 4bit_multiplier{lay} from library ServetCelik_ELE419_Project
+
+Ignoring BSIM parameter XL
+Ignoring BSIM parameter XW
+Ignoring BSIM parameter XL
+Ignoring BSIM parameter XW
+Early termination of direct N-R iteration.
+Direct Newton iteration failed to find .op point.  (Use ".option noopiter" to skip.)
+Starting Gmin stepping
+Gmin = 10
+Gmin = 1.07374
+Gmin = 0.115292
+Gmin = 0.0123794
+Gmin = 0.00132923
+Gmin = 0.000142725
+Gmin = 1.5325e-005
+Gmin = 1.6455e-006
+Gmin = 1.76685e-007
+Gmin = 1.89714e-008
+Gmin = 2.03704e-009
+Gmin = 2.18725e-010
+Gmin = 2.34854e-011
+Gmin = 2.52173e-012
+Gmin = 2.70769e-013
+Gmin = 0
+Gmin stepping succeeded in finding the operating point.
+
+
+Date: Tue Jan 02 15:57:33 2024
+Total elapsed time: 0.881 seconds.
+
+tnom = 27
+temp = 27
+method = modified trap
+totiter = 2470
+traniter = 2082
+tranpoints = 1042
+accept = 1042
+rejected = 0
+matrix size = 357
+fillins = 590
+solver = Normal
+Thread vector: 279.5/93.3[12] 70.0/27.6[12] 25.7/13.1[11] 2.3/16.5[1]  2592/500
+Matrix Compiler1: 96.39 KB object code size  21.2/11.8/[6.8]
+Matrix Compiler2: 57.56 KB object code size  9.9/8.6/[2.7]
+

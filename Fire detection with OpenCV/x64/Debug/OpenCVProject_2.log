@@ -1,0 +1,8 @@
+﻿  main.cpp
+  fireColorDetection.cpp
+C:\Users\Servet\Desktop\new_proje\Fire detection with OpenCV\fireColorDetection.cpp(83,94): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  motionDetection.cpp
+  smokeColorDetection.cpp
+C:\Users\Servet\Desktop\new_proje\Fire detection with OpenCV\smokeColorDetection.cpp(96,94): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  Generating Code...
+  OpenCVProject_2.vcxproj -> C:\Users\Servet\Desktop\new_proje\Fire detection with OpenCV\x64\Debug\OpenCVProject_2.exe

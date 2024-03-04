@@ -1,0 +1,31 @@
+Circuit: *** SPICE deck for cell AND_gate{sch} from library ServetCelik_ELE419_Project
+
+Ignoring BSIM parameter XL
+Ignoring BSIM parameter XW
+Ignoring BSIM parameter XL
+Ignoring BSIM parameter XW
+Warning: Pd = 0 is less than W.
+Warning: Ps = 0 is less than W.
+Warning: Pd = 0 is less than W.
+Warning: Ps = 0 is less than W.
+Warning: Pd = 0 is less than W.
+Warning: Ps = 0 is less than W.
+Direct Newton iteration for .op point succeeded.
+
+Date: Mon Jan 01 16:30:34 2024
+Total elapsed time: 0.097 seconds.
+
+tnom = 27
+temp = 27
+method = modified trap
+totiter = 3513
+traniter = 3493
+tranpoints = 1389
+accept = 1307
+rejected = 82
+matrix size = 9
+fillins = 0
+solver = Normal
+Matrix Compiler1: 368 bytes object code size  0.1/0.1/[0.1]
+Matrix Compiler2: off  [0.1]/0.1/0.1
+

@@ -1,0 +1,72 @@
+*** SPICE deck for cell sim_Pad_I_O_Output{sch} from library 
+*MOSIS_SUBM_PADS_C5
+*** Created on Fri Jun 12, 2009 17:17:09
+*** Last revised on Sun Nov 21, 2010 14:38:16
+*** Written on Sun Oct 30, 2011 08:26:07 by Electric VLSI Design System, 
+*version 9.01
+*** Layout tech: mocmos, foundry MOSIS
+*** UC SPICE *** , MIN_RESIST 4.0, MIN_CAPAC 0.1FF
+
+*** SUBCIRCUIT Nact_PWell_diode FROM CELL Nact_PWell_diode{sch}
+.SUBCKT Nact_PWell_diode N_act P_well
+
+* Spice Code nodes in cell cell 'Nact_PWell_diode{sch}'
+D1 P_well N_act Dnpn
+.model Dnpn D is=1e-18 n=1
+.ENDS Nact_PWell_diode
+
+*** SUBCIRCUIT Pact_Nwell_diode FROM CELL Pact_Nwell_diode{sch}
+.SUBCKT Pact_Nwell_diode N_well P_act
+
+* Spice Code nodes in cell cell 'Pact_Nwell_diode{sch}'
+D2 P_act N_well Dpnp
+.model Dpnp D is=1e-18 n=1
+.ENDS Pact_Nwell_diode
+
+*** SUBCIRCUIT Vdd_Gnd_bus FROM CELL Vdd_Gnd_bus{sch}
+.SUBCKT Vdd_Gnd_bus gnd_1 vdd_1
+
+* Spice Code nodes in cell cell 'Vdd_Gnd_bus{sch}'
+R1 vdd_1 gnd_1 10g
+.ENDS Vdd_Gnd_bus
+
+*** SUBCIRCUIT Pad_Analog FROM CELL Pad_Analog{sch}
+.SUBCKT Pad_Analog Analog gnd_1 vdd_1
+XNact_PWe@0 Analog gnd_1 Nact_PWell_diode
+XNwell_Pa@0 vdd_1 Analog Pact_Nwell_diode
+XVdd_Gnd_@0 gnd_1 vdd_1 Vdd_Gnd_bus
+.ENDS Pad_Analog
+
+*** SUBCIRCUIT Pad_I_O FROM CELL Pad_I_O{sch}
+.SUBCKT Pad_I_O D_In D_InB D_Out En dgnd dvdd pad
+Mnmos@0 pad pren dgnd dgnd NMOS L=0.6U W=60U
+Mnmos@1 D_InB pad dgnd dgnd NMOS L=0.6U W=15U
+Mnmos@2 D_In D_InB dgnd dgnd NMOS L=0.6U W=15U
+Mnmos@3 prep oe pren dgnd NMOS L=0.6U W=7.5U
+Mnmos@4 pren oeb dgnd dgnd NMOS L=0.6U W=7.5U
+Mnmos@5 oeb En dgnd dgnd NMOS L=0.6U W=1.8U
+Mnmos@6 oe oeb dgnd dgnd NMOS L=0.6U W=1.8U
+Mnmos@7 pren D_Out dgnd dgnd NMOS L=0.6U W=7.5U
+Mpmos@0 dvdd prep pad dvdd PMOS L=0.6U W=120U
+Mpmos@1 dvdd pad D_InB dvdd PMOS L=0.6U W=30U
+Mpmos@2 dvdd D_InB D_In dvdd PMOS L=0.6U W=30U
+Mpmos@3 dvdd oe prep dvdd PMOS L=0.6U W=15U
+Mpmos@4 prep oeb pren dvdd PMOS L=0.6U W=15U
+Mpmos@5 dvdd D_Out prep dvdd PMOS L=0.6U W=15U
+Mpmos@6 dvdd En oeb dvdd PMOS L=0.6U W=3.6U
+Mpmos@7 dvdd oeb oe dvdd PMOS L=0.6U W=3.6U
+XPAD_Anal@0 pad dgnd dvdd Pad_Analog
+.ENDS Pad_I_O
+
+*** TOP LEVEL CELL: sim_Pad_I_O_Output{sch}
+XPad_I/O@0 D_In D_InB D_Out En dgnd dvdd Out_Pad Pad_I_O
+
+* Spice Code nodes in cell cell 'sim_Pad_I_O_Output{sch}'
+vdd dvdd 0 dc 5
+vgnd dgnd 0 dc 0
+CC1 Out_Pad 0 30p
+VD_Out D_Out 0 dc 0 pulse 0 5 10p 10p 10p 50n 100n
+VEn En 0 dc 5
+.include C5_models.txt
+.trans 10p 200n
+.END

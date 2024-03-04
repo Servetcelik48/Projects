@@ -1,0 +1,112 @@
+Circuit: *** SPICE deck for cell Analog_barepadframe_1.5mmX1.5mm{lay} from library ServetCelik_ELE419_Project
+
+Ignoring BSIM parameter XL
+Ignoring BSIM parameter XW
+Ignoring BSIM parameter XL
+Ignoring BSIM parameter XW
+WARNING: Node 8BIT_MUL_0_B3 is floating.
+WARNING: Node 8BIT_MUL_0_A7 is floating.
+WARNING: Node 8BIT_MUL_0_A6 is floating.
+WARNING: Node 8BIT_MUL_0_B2 is floating.
+WARNING: Node 8BIT_MUL_0_A5 is floating.
+WARNING: Node 8BIT_MUL_0_A4 is floating.
+WARNING: Node 8BIT_MUL_0_B1 is floating.
+WARNING: Node 8BIT_MUL_0_B0 is floating.
+WARNING: Node 8BIT_MUL_0_B7 is floating.
+WARNING: Node 8BIT_MUL_0_B6 is floating.
+WARNING: Node 8BIT_MUL_0_B5 is floating.
+WARNING: Node 8BIT_MUL_0_B4 is floating.
+WARNING: Node 8BIT_MUL_0_A3 is floating.
+WARNING: Node 8BIT_MUL_0_A2 is floating.
+WARNING: Node 8BIT_MUL_0_A1 is floating.
+WARNING: Node 8BIT_MUL_0_A0 is floating.
+
+WARNING: Less than two connections to node I_O_CORN_0:VDD.  This node is used by R:I_O_CORN_0:1.
+WARNING: Less than two connections to node I_O_CORN_1:VDD.  This node is used by R:I_O_CORN_1:1.
+WARNING: Less than two connections to node I_O_CORN_2:VDD.  This node is used by R:I_O_CORN_2:1.
+WARNING: Less than two connections to node I_O_CORN_3:VDD.  This node is used by R:I_O_CORN_3:1.
+WARNING: Less than two connections to node PAD_M3M2_17:VDD_GND__0:GND_1.  This node is used by R:PAD_M3M2_17:VDD_GND__0:1.
+WARNING: Less than two connections to node PAD_M3M2_18:VDD_GND__0:GND_1.  This node is used by R:PAD_M3M2_18:VDD_GND__0:1.
+WARNING: Less than two connections to node PAD_M3M2_19:VDD_GND__0:GND_1.  This node is used by R:PAD_M3M2_19:VDD_GND__0:1.
+WARNING: Less than two connections to node PAD_M3M2_20:VDD_GND__0:GND_1.  This node is used by R:PAD_M3M2_20:VDD_GND__0:1.
+WARNING: Less than two connections to node PAD_M3M2_21:VDD_GND__0:GND_1.  This node is used by R:PAD_M3M2_21:VDD_GND__0:1.
+WARNING: Less than two connections to node PAD_M3M2_22:VDD_GND__0:GND_1.  This node is used by R:PAD_M3M2_22:VDD_GND__0:1.
+WARNING: Less than two connections to node PAD_M3M2_23:VDD_GND__0:GND_1.  This node is used by R:PAD_M3M2_23:VDD_GND__0:1.
+WARNING: Less than two connections to node PAD_M3M2_24:VDD_GND__0:GND_1.  This node is used by R:PAD_M3M2_24:VDD_GND__0:1.
+WARNING: Less than two connections to node PAD_M3M2_25:VDD_GND__0:GND_1.  This node is used by R:PAD_M3M2_25:VDD_GND__0:1.
+WARNING: Less than two connections to node PAD_M3M2_26:VDD_GND__0:GND_1.  This node is used by R:PAD_M3M2_26:VDD_GND__0:1.
+WARNING: Less than two connections to node PAD_M3M2_45:VDD_GND__0:GND_1.  This node is used by R:PAD_M3M2_45:VDD_GND__0:1.
+WARNING: Less than two connections to node PAD_M3M2_60:VDD_GND__0:GND_1.  This node is used by R:PAD_M3M2_60:VDD_GND__0:1.
+WARNING: Less than two connections to node PAD_M3M2_75:VDD_GND__0:GND_1.  This node is used by R:PAD_M3M2_75:VDD_GND__0:1.
+WARNING: Less than two connections to node PAD_M3M2_90:VDD_GND__0:GND_1.  This node is used by R:PAD_M3M2_90:VDD_GND__0:1.
+WARNING: Less than two connections to node PAD_M3M2_105:VDD_GND__0:GND_1.  This node is used by R:PAD_M3M2_105:VDD_GND__0:1.
+WARNING: Less than two connections to node PAD_M3M2_135:VDD_GND__0:GND_1.  This node is used by R:PAD_M3M2_135:VDD_GND__0:1.
+WARNING: Less than two connections to node PAD_M3M2_150:VDD_GND__0:GND_1.  This node is used by R:PAD_M3M2_150:VDD_GND__0:1.
+WARNING: Less than two connections to node PAD_M3M2_165:VDD_GND__0:GND_1.  This node is used by R:PAD_M3M2_165:VDD_GND__0:1.
+WARNING: Less than two connections to node PAD_M3M2_180:VDD_GND__0:GND_1.  This node is used by R:PAD_M3M2_180:VDD_GND__0:1.
+WARNING: Less than two connections to node PAD_M3M2_212:VDD_GND__0:GND_1.  This node is used by R:PAD_M3M2_212:VDD_GND__0:1.
+WARNING: Less than two connections to node PAD_M3M2_213:VDD_GND__0:GND_1.  This node is used by R:PAD_M3M2_213:VDD_GND__0:1.
+WARNING: Less than two connections to node PAD_M3M2_214:VDD_GND__0:GND_1.  This node is used by R:PAD_M3M2_214:VDD_GND__0:1.
+WARNING: Less than two connections to node PAD_M3M2_215:VDD_GND__0:GND_1.  This node is used by R:PAD_M3M2_215:VDD_GND__0:1.
+WARNING: Less than two connections to node PAD_M3M2_216:VDD_GND__0:GND_1.  This node is used by R:PAD_M3M2_216:VDD_GND__0:1.
+WARNING: Less than two connections to node PAD_M3M2_217:VDD_GND__0:GND_1.  This node is used by R:PAD_M3M2_217:VDD_GND__0:1.
+WARNING: Less than two connections to node PAD_M3M2_218:VDD_GND__0:GND_1.  This node is used by R:PAD_M3M2_218:VDD_GND__0:1.
+WARNING: Less than two connections to node PAD_M3M2_219:VDD_GND__0:GND_1.  This node is used by R:PAD_M3M2_219:VDD_GND__0:1.
+WARNING: Less than two connections to node PAD_M3M2_220:VDD_GND__0:GND_1.  This node is used by R:PAD_M3M2_220:VDD_GND__0:1.
+WARNING: Less than two connections to node PAD_M3M2_221:VDD_GND__0:GND_1.  This node is used by R:PAD_M3M2_221:VDD_GND__0:1.
+WARNING: Less than two connections to node PAD_M3M2_222:VDD_GND__0:GND_1.  This node is used by R:PAD_M3M2_222:VDD_GND__0:1.
+WARNING: Less than two connections to node PAD_M3M2_224:VDD_GND__0:GND_1.  This node is used by R:PAD_M3M2_224:VDD_GND__0:1.
+WARNING: Less than two connections to node PAD_M3M2_225:VDD_GND__0:GND_1.  This node is used by R:PAD_M3M2_225:VDD_GND__0:1.
+WARNING: Less than two connections to node PAD_M3M2_226:VDD_GND__0:GND_1.  This node is used by R:PAD_M3M2_226:VDD_GND__0:1.
+WARNING: Less than two connections to node PAD_M3M2_227:VDD_GND__0:GND_1.  This node is used by R:PAD_M3M2_227:VDD_GND__0:1.
+WARNING: Less than two connections to node PAD_M3M2_228:VDD_GND__0:GND_1.  This node is used by R:PAD_M3M2_228:VDD_GND__0:1.
+WARNING: Less than two connections to node PAD_M3M2_229:VDD_GND__0:GND_1.  This node is used by R:PAD_M3M2_229:VDD_GND__0:1.
+WARNING: Less than two connections to node PAD_M3M2_230:VDD_GND__0:GND_1.  This node is used by R:PAD_M3M2_230:VDD_GND__0:1.
+WARNING: Less than two connections to node PAD_M3M2_231:VDD_GND__0:GND_1.  This node is used by R:PAD_M3M2_231:VDD_GND__0:1.
+WARNING: Less than two connections to node PAD_GND_0:BUS_VDD__0:GND_1.  This node is used by R:PAD_GND_0:BUS_VDD__0:1.
+WARNING: Less than two connections to node PAD_VDD_0:BUS_VDD__1:GND_1.  This node is used by R:PAD_VDD_0:BUS_VDD__1:1.
+WARNING: Less than two connections to node PIN1.  This node is used by VINPIN1.
+WARNING: Less than two connections to node A6.  This node is used by VINA6.
+WARNING: Less than two connections to node A5.  This node is used by VINA5.
+WARNING: Less than two connections to node A4.  This node is used by VINA4.
+WARNING: Less than two connections to node A3.  This node is used by VINA3.
+WARNING: Less than two connections to node A2.  This node is used by VINA2.
+WARNING: Less than two connections to node A1.  This node is used by VINA1.
+WARNING: Less than two connections to node A0.  This node is used by VINA0.
+WARNING: Less than two connections to node B7.  This node is used by VINB7.
+WARNING: Less than two connections to node B6.  This node is used by VINB6.
+WARNING: Less than two connections to node B5.  This node is used by VINB5.
+WARNING: Less than two connections to node B4.  This node is used by VINB4.
+WARNING: Less than two connections to node B3.  This node is used by VINB3.
+WARNING: Less than two connections to node B2.  This node is used by VINB2.
+WARNING: Less than two connections to node B1.  This node is used by VINB1.
+WARNING: Less than two connections to node B0.  This node is used by VINB0.
+Early termination of direct N-R iteration.
+Direct Newton iteration failed to find .op point.  (Use ".option noopiter" to skip.)
+Starting Gmin stepping
+Gmin = 10
+Gmin = 1.07374
+Gmin = 0.115292
+Gmin = 0.0123794
+Gmin = 0.00132923
+Gmin = 0.000142725
+Gmin = 1.5325e-005
+Gmin = 1.6455e-006
+Gmin = 1.76685e-007
+Gmin = 1.89714e-008
+Gmin = 2.03704e-009
+Gmin = 2.18725e-010
+Gmin = 2.34854e-011
+Gmin = 2.52173e-012
+Gmin = 2.70769e-013
+vernier = 0.5
+vernier = 0.25
+vernier = 0.125
+vernier = 0.0625
+vernier = 0.03125
+Gmin = 0
+Gmin stepping aborted per request.
+
+Starting source stepping with srcstepmethod=0
+Source Step = 3.0303%
+Source Step = 33.3333%

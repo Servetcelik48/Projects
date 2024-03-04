@@ -1,0 +1,36 @@
+Circuit: *** SPICE deck for cell fullAdder2{sch} from library ServetCelik_ELE419_Project
+
+Ignoring BSIM parameter XL
+Ignoring BSIM parameter XW
+Ignoring BSIM parameter XL
+Ignoring BSIM parameter XW
+Warning: Pd = 0 is less than W.
+Warning: Ps = 0 is less than W.
+Warning: Pd = 0 is less than W.
+Warning: Ps = 0 is less than W.
+Warning: Pd = 0 is less than W.
+Warning: Ps = 0 is less than W.
+Warning: Pd = 0 is less than W.
+Warning: Ps = 0 is less than W.
+Warning: Pd = 0 is less than W.
+Warning: Ps = 0 is less than W.
+Direct Newton iteration for .op point succeeded.
+
+Date: Sat Jan 13 15:22:33 2024
+Total elapsed time: 0.213 seconds.
+
+tnom = 27
+temp = 27
+method = modified trap
+totiter = 6599
+traniter = 6556
+tranpoints = 2078
+accept = 1768
+rejected = 310
+matrix size = 29
+fillins = 12
+solver = Normal
+Thread vector: 24.5/12.9[4] 6.3/3.5[4] 2.3/1.9[3] 0.2/1.1[1]  2592/500
+Matrix Compiler1: 3.28 KB object code size  0.7/0.5/[0.3]
+Matrix Compiler2: off  [0.5]/0.8/0.6
+

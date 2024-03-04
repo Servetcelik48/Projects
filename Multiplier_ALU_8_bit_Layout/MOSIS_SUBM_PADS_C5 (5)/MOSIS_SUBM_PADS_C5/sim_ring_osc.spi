@@ -1,0 +1,91 @@
+*** SPICE deck for cell sim_ring_osc{lay} from library MOSIS_SUBM_PADS_C5
+*** Created on Wed Sep 23, 2009 12:40:21
+*** Last revised on Sun Nov 21, 2010 14:41:49
+*** Written on Sun Nov 21, 2010 14:41:52 by Electric VLSI Design System,
+*version 8.11
+*** Layout tech: mocmos, foundry MOSIS
+*** UC SPICE *** , MIN_RESIST 4.0, MIN_CAPAC 0.1FF
+
+*** SUBCIRCUIT Inv_20_10 FROM CELL Inv_20_10{lay}
+.SUBCKT Inv_20_10 Vin Vout gnd vdd
+Mnmos@0 Vout Vin gnd gnd NMOS L=0.6U W=3U AS=13.5P AD=7.425P PS=23.7U
++PD=12.3U
+Mpmos@0 Vout Vin vdd vdd PMOS L=0.6U W=6U AS=18.45P AD=7.425P PS=29.7U
++PD=12.3U
+.ENDS Inv_20_10
+
+*** SUBCIRCUIT Ringoscillator FROM CELL Ringoscillator{lay}
+.SUBCKT Ringoscillator Vosc gnd vdd
+XInv_20_1@0 net@492 net@346 gnd vdd Inv_20_10
+XInv_20_1@1 net@346 net@355 gnd vdd Inv_20_10
+XInv_20_1@2 net@355 net@365 gnd vdd Inv_20_10
+XInv_20_1@3 net@365 net@375 gnd vdd Inv_20_10
+XInv_20_1@4 net@375 net@385 gnd vdd Inv_20_10
+XInv_20_1@5 net@385 net@395 gnd vdd Inv_20_10
+XInv_20_1@6 net@395 net@397 gnd vdd Inv_20_10
+XInv_20_1@7 net@397 net@398 gnd vdd Inv_20_10
+XInv_20_1@8 net@398 net@400 gnd vdd Inv_20_10
+XInv_20_1@9 net@400 net@399 gnd vdd Inv_20_10
+XInv_20_1@10 net@399 Vosc gnd vdd Inv_20_10
+XInv_20_1@11 net@487 net@347 gnd vdd Inv_20_10
+XInv_20_1@12 net@347 net@348 gnd vdd Inv_20_10
+XInv_20_1@13 net@348 net@349 gnd vdd Inv_20_10
+XInv_20_1@14 net@349 net@350 gnd vdd Inv_20_10
+XInv_20_1@15 net@350 net@351 gnd vdd Inv_20_10
+XInv_20_1@16 net@351 net@352 gnd vdd Inv_20_10
+XInv_20_1@17 net@352 net@353 gnd vdd Inv_20_10
+XInv_20_1@18 net@353 net@354 gnd vdd Inv_20_10
+XInv_20_1@19 net@354 net@356 gnd vdd Inv_20_10
+XInv_20_1@20 net@356 net@492 gnd vdd Inv_20_10
+XInv_20_1@21 net@482 net@357 gnd vdd Inv_20_10
+XInv_20_1@22 net@357 net@358 gnd vdd Inv_20_10
+XInv_20_1@23 net@358 net@359 gnd vdd Inv_20_10
+XInv_20_1@24 net@359 net@360 gnd vdd Inv_20_10
+XInv_20_1@25 net@360 net@361 gnd vdd Inv_20_10
+XInv_20_1@26 net@361 net@362 gnd vdd Inv_20_10
+XInv_20_1@27 net@362 net@363 gnd vdd Inv_20_10
+XInv_20_1@28 net@363 net@364 gnd vdd Inv_20_10
+XInv_20_1@29 net@364 net@366 gnd vdd Inv_20_10
+XInv_20_1@30 net@366 net@487 gnd vdd Inv_20_10
+XInv_20_1@31 net@476 net@367 gnd vdd Inv_20_10
+XInv_20_1@32 net@367 net@368 gnd vdd Inv_20_10
+XInv_20_1@33 net@368 net@369 gnd vdd Inv_20_10
+XInv_20_1@34 net@369 net@370 gnd vdd Inv_20_10
+XInv_20_1@35 net@370 net@371 gnd vdd Inv_20_10
+XInv_20_1@36 net@371 net@372 gnd vdd Inv_20_10
+XInv_20_1@37 net@372 net@373 gnd vdd Inv_20_10
+XInv_20_1@38 net@373 net@374 gnd vdd Inv_20_10
+XInv_20_1@39 net@374 net@376 gnd vdd Inv_20_10
+XInv_20_1@40 net@376 net@482 gnd vdd Inv_20_10
+XInv_20_1@41 net@471 net@377 gnd vdd Inv_20_10
+XInv_20_1@42 net@377 net@378 gnd vdd Inv_20_10
+XInv_20_1@43 net@378 net@379 gnd vdd Inv_20_10
+XInv_20_1@44 net@379 net@380 gnd vdd Inv_20_10
+XInv_20_1@45 net@380 net@381 gnd vdd Inv_20_10
+XInv_20_1@46 net@381 net@382 gnd vdd Inv_20_10
+XInv_20_1@47 net@382 net@383 gnd vdd Inv_20_10
+XInv_20_1@48 net@383 net@384 gnd vdd Inv_20_10
+XInv_20_1@49 net@384 net@386 gnd vdd Inv_20_10
+XInv_20_1@50 net@386 net@476 gnd vdd Inv_20_10
+XInv_20_1@51 Vosc net@387 gnd vdd Inv_20_10
+XInv_20_1@52 net@387 net@388 gnd vdd Inv_20_10
+XInv_20_1@53 net@388 net@389 gnd vdd Inv_20_10
+XInv_20_1@54 net@389 net@390 gnd vdd Inv_20_10
+XInv_20_1@55 net@390 net@391 gnd vdd Inv_20_10
+XInv_20_1@56 net@391 net@392 gnd vdd Inv_20_10
+XInv_20_1@57 net@392 net@393 gnd vdd Inv_20_10
+XInv_20_1@58 net@393 net@394 gnd vdd Inv_20_10
+XInv_20_1@59 net@394 net@396 gnd vdd Inv_20_10
+XInv_20_1@60 net@396 net@471 gnd vdd Inv_20_10
+.ENDS Ringoscillator
+
+*** TOP LEVEL CELL: sim_ring_osc{lay}
+XRingosci@0 Vosc gnd vdd Ringoscillator
+
+* Spice Code nodes in cell cell 'sim_ring_osc{lay}'
+vdd vdd 0 dc 5
+vgnd gnd 0 dc 0
+.ic V(Vosc)=5
+.include C5_models.txt
+.tran .1n 20n
+.END

@@ -1,0 +1,26 @@
+Circuit: *** SPICE deck for cell 8bit_ADD_SUB{lay} from library ServetCelik_ELE419_Project
+
+Ignoring BSIM parameter XL
+Ignoring BSIM parameter XW
+Ignoring BSIM parameter XL
+Ignoring BSIM parameter XW
+Direct Newton iteration for .op point succeeded.
+
+Date: Mon Jan 15 08:31:18 2024
+Total elapsed time: 0.581 seconds.
+
+tnom = 27
+temp = 27
+method = modified trap
+totiter = 2129
+traniter = 2082
+tranpoints = 1042
+accept = 1042
+rejected = 0
+matrix size = 254
+fillins = 280
+solver = Normal
+Thread vector: 179.4/66.5[12] 51.1/22.8[12] 19.9/10.8[12] 1.5/5.2[1]  2592/500
+Matrix Compiler1: 50.66 KB object code size  12.8/6.4/[3.7]
+Matrix Compiler2: 37.91 KB object code size  6.6/5.9/[1.6]
+
